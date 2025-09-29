@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Simple Navbar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            /*gap: 20px;*/
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: green;
+        }
+
+        .login-btn {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        /* Demo content */
+        .content {
+            padding: 40px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Show different justify-content options */
+        .demo-bar {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+        }
+
+        .item {
+            background-color: orange;
+            color: white;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- Main Navbar -->
+<nav class="navbar">
+    <div class="logo">MyWebsite</div>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Buy Now</a></li>
+    </ul>
+
+<!--    <button class="login-btn">Login</button>-->
+</nav>
+
+<!-- Demo Content -->
+<div class="content">
+    <h1>Navbar Flexbox Demo</h1>
+    <p>The navbar above uses <strong>justify-content: space-between</strong> to spread items apart.</p>
+
+    <h2>Try Different justify-content Values:</h2>
+
+    <div class="demo-bar" style="justify-content: flex-start;">
+        <div class="item">Logo</div>
+        <div class="item">Menu</div>
+        <div class="item">Login</div>
+        <span style="margin-left: 20px;">justify-content: flex-start</span>
+    </div>
+
+    <div class="demo-bar" style="justify-content: center;">
+        <div class="item">Logo</div>
+        <div class="item">Menu</div>
+        <div class="item">Login</div>
+        <span style="margin-left: 20px;">justify-content: center</span>
+    </div>
+
+    <div class="demo-bar" style="justify-content: space-between;">
+        <div class="item">Logo</div>
+        <div class="item">Menu</div>
+        <div class="item">Login</div>
+        <span style="margin-left: 20px;">justify-content: space-between</span>
+    </div>
+</div>
+</body>
+</html>

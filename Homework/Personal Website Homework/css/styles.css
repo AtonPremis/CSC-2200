@@ -1,0 +1,33 @@
+header {
+    text-align: center;
+}
+
+body {
+    background-color: #af0000;
+    color: white;
+    margin: 0 13%;
+}
+
+h1 {
+    margin: 10px;
+    background-color: #d80000;
+}
+
+h2 {
+    text-align: center;
+    background-color: #d80000;
+}
+
+a {
+    color: white;
+}
+
+.rounded {
+    border-radius: 30px;
+}
+
+.emphasis {
+    font-size: 20px;
+    font-weight: bold;
+    color: lightgoldenrodyellow;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 4: Display Inline vs Block</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background-color: yellow;
+            border: 2px solid orange;
+            /* TASK A: Try adding width and height here - what happens? */
+             width: 200px;
+             height: 50px;
+
+            /* TASK B: Uncomment the line below to see the difference */
+             display: inline-block;
+        }
+
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .instructions {
+            background-color: lightgreen;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid green;
+        }
+
+        .demo-box {
+            display: inline;
+            background-color: lightblue;
+            border: 2px solid blue;
+            padding: 10px;
+            margin: 10px;
+            /* These won't work on inline elements: */
+            width: 150px;
+            height: 60px;
+        }
+
+        .demo-inline-block {
+            display: inline-block;
+            background-color: lightcoral;
+            border: 2px solid red;
+            padding: 10px;
+            margin: 10px;
+            /* These WILL work on inline-block elements: */
+            width: 150px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<h1>Problem 4: Display Inline vs Block</h1>
+
+<div class="instructions">
+    <h3>Your Tasks:</h3>
+    <p><strong>Task A:</strong> Uncomment the width and height properties for .highlight. What happens? Do they have any effect? Nothing happens</p>
+    <p><strong>Task B:</strong> Uncomment the "display: inline-block" line. How does this change the behavior? The text
+        still wraps the highletted words but the highlighted words have width and height</p>
+</div>
+
+<div class="test-section">
+    <h3>Test Area:</h3>
+    <p>This is a <span class="highlight">highlighted word</span> in a sentence. Notice how it flows with the text.</p>
+    <p>Here's another <span class="highlight">highlighted word</span> that should also flow inline with the text around it.</p>
+    <p>Try making the highlighted spans have <span class="highlight">specific widths and heights</span> using CSS!</p>
+</div>
+
+<div class="test-section">
+    <h3>Demonstration: Inline vs Inline-Block</h3>
+    <p>Compare these elements:</p>
+
+    <div>
+        <span class="demo-box">Inline Element</span>
+        <span class="demo-box">Another Inline</span>
+        <span class="demo-box">Third Inline</span>
+    </div>
+
+    <p>VS:</p>
+
+    <div>
+        <span class="demo-inline-block">Inline-Block</span>
+        <span class="demo-inline-block">Another Inline-Block</span>
+        <span class="demo-inline-block">Third Inline-Block</span>
+    </div>
+</div>
+
+<div class="instructions">
+    <h3>Questions to Consider:</h3>
+    <ul>
+        <li>Which elements respect width and height properties?</li>
+        <li>Which elements flow in line with text vs. create line breaks?</li>
+        <li>When would you use inline vs inline-block vs block?</li>
+    </ul>
+
+    <h4>Remember:</h4>
+    <ul>
+        <li><strong>inline:</strong> Flows with text, ignores width/height</li>
+        <li><strong>block:</strong> Takes full width, creates line breaks</li>
+        <li><strong>inline-block:</strong> Flows with text BUT respects width/height</li>
+    </ul>
+</div>
+</body>
+</html>

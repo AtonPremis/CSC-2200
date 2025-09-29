@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Prem Kumar Khadai - FlexBox Portfolio - Academics</title>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <header class="header">
+            <div class="student-image">
+                <img id="selfie" src="imgs/selfie.jpg" width="80px" height="80px" alt="Selfie Of Prem Khadai">
+            </div>
+            <h1 class="student-name">
+                Prem Kumar Khadai
+            </h1>
+        </header>
+        <div class="main-container">
+            <nav class="nav-sidebar">
+                <a rel="noopener" href="homePage.html" class="nav-item">Home</a>
+                <a rel="noopener" href="academics.html" class="nav-item current">Academics</a>
+                <a rel="noopener" href="cartoons.html" class="nav-item">Cartoons</a>
+            </nav>
+            <main class="content-area">
+                <h2 class="content-header">Classes At College</h2>
+                <p style="padding-bottom: 1rem">
+                    Here is the planned courses and completed course
+                    relating to my double major in <span class="highlight">Computer Science</span>
+                    and <span class="highlight">Cyber Security</span>.
+                </p>
+                <div class="course">
+                    <p class="semester">Fall 2025</p>
+                    <div class="course-title">
+                        Web Application Development
+                        <span class="course-code">CSC-2200</span>
+                        <span class="course-status tbd">TBD</span>
+                    </div>
+                    <p>
+                        This course is an introduction to web-based software development focusing on
+                        client-side web technologies needed to build dynamic and robust websites. Topics include
+                        HTTP protocols, HTML, CSS, JavaScript and AJAX. Programming is required.
+                    </p>
+                </div>
+                <div class="course">
+                    <p class="semester">Fall 2025</p>
+                    <div class="course-title">
+                        Computer System/Architecture
+                        <span class="course-code">CSC-2300</span>
+                        <span class="course-status tbd">TBD</span>
+                    </div>
+                    <p>
+                        This course covers the mechanics of information transfer and representation
+                        between system components. Topics include addressing modes, CPU organization, ALU, bus
+                        structures, data organization, interrupts, input/output and instruction sets.
+                    </p>
+                </div>
+                <div class="course">
+                    <p class="semester">Spring 2026</p>
+                    <div class="course-title">
+                        Data Structures and Algorithms
+                        <span class="course-code">CSC-2150</span>
+                        <span class="course-status tbd">TBD</span>
+                    </div>
+                    <p>
+                        This course is a continuation of CSC1700 with a focus on advanced data structures: stacks,
+                        queues, priority queues, linked lists, binary trees, and hash maps. Advanced coding
+                        practices, algorithm design, recursive functions, and sorting and searching techniques
+                        are studied and utilized in various programming projects. Extensive programming is required.
+                    </p>
+                </div>
+                <div class="course">
+                    <p class="semester">Non-term Course</p>
+                    <div class="course-title">
+                        Introduction to Computer Programming
+                        <span class="course-code">CSC-1700</span>
+                        <span class="course-status completed">Completed</span>
+                    </div>
+                    <p>
+                        This course provides an introduction to computer programming, with a focus on problem
+                        solving and algorithm development using a procedural approach. Topics include basic
+                        logic structures, looping, one- and two- dimensional lists, I/O, and modularization of code.
+                        Extensive programming is required.
+                    </p>
+                </div>
+                <div class="course">
+                    <p class="semester">To Be Decided</p>
+                    <div class="course-title">
+                        Foundations of Cybersecurity
+                        <span class="course-code">CYB-1100</span>
+                        <span class="course-status tbd">TBD</span>
+                    </div>
+                    <p>
+                        Analyze and draft cybersecurity policies; create practical approaches to risk analysis;
+                        practice techniques to prevent intrusions and attacks that threaten organizational data;
+                        and participate in exercises in cryptography, ethical hacking, and crisis management.
+                    </p>
+                </div>
+
+            </main>
+        </div>
+
+
+
+
+
+
+        <script type="module" src="https://s.brightspace.com/lib/bsi/2025.8.272/unbundled/mathjax.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+            if (document.querySelector('math') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+                document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+                    elm.setAttribute('style', 'display: block; height: 0.5rem;');
+                });
+
+                document.querySelectorAll('math mmultiscripts > none').forEach(elm => {
+                    const mrow = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
+                    elm.replaceWith(mrow);
+                });
+
+                window.D2L.MathJax.loadMathJax({
+                    outputScale: 1,
+                    renderLatex: true,
+                    enableMML3Support: false
+                });
+            }
+        });</script>
+        <script type="module" src="https://s.brightspace.com/lib/bsi/2025.8.272/unbundled/prism.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.d2l-code').forEach(code => {
+                window.D2L.Prism.formatCodeElement(code);
+            });
+        });</script>
+        <script type="module" src="https://s.brightspace.com/lib/bsi/2025.8.272/unbundled/embeds.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+            window.D2L.EmbedRenderer.renderEmbeds(document.body);
+        });
+        </script>
+    </body>
+</html>

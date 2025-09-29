@@ -1,0 +1,79 @@
+html {
+    font-size: 18px;
+    margin : 0px;
+    padding: 0px;
+}
+body {
+    color : brown;
+}
+header {
+    height: 120px;
+    background-color: plum;
+    border: solid 1px;
+    width: 100%;
+}
+#logo {
+    /*float: left;*/
+    /*padding: 10px;*/
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 100px;
+}
+#title {
+    position: relative;
+    top: 5px;
+    /*border: 1px solid;*/
+    /*left: 50px;*/
+    /*left: 20%;*/
+    /*display: inline;*/
+}
+table, tr, td, th  {
+    border: 2px solid;
+    border-collapse: collapse;
+}
+main {
+    margin-left: 10%;
+    padding-left: 5%;
+    width: 80%;
+    background-color: antiquewhite;
+    position: relative;
+}
+.pageTitle {
+    background-color: cornflowerblue;
+    width: 100%;
+    position: relative;
+    left : -5%;
+    padding-left: 50px;
+}
+#homer {
+    width: 100px;
+    /*float: right;*/
+    position: absolute;
+    top: 40px;
+    left: 1200px;
+    /*padding-right: 15px;*/
+}
+#bottomNote {
+    width: 60%;
+    height: 200px;
+    border: solid 1px;
+    /*position: relative;*/
+
+}
+#brave_img{
+    float: left;
+    /*position: absolute;*/
+    /*top: 0px;*/
+    padding-right: 5px;
+}
+
+#run {
+    background-color: red;
+    width: 100px;
+    border: solid 1px;
+    height: 100px;
+    padding: 5px;
+    position: fixed;
+    top: 90px;
+    left: 20px;
+}

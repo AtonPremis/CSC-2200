@@ -1,0 +1,113 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 5: Float</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        article {
+            border: 3px solid green;
+            padding: 20px;
+            background-color: lightgreen;
+            margin: 20px 0;
+            /* TASK B: You might need to add something here */
+
+        }
+
+        .article-image {
+            width: 200px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            /* TASK A: Add your float CSS here */
+            float: right;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .instructions {
+            background-color: lightyellow;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid orange;
+        }
+
+        .demo-article {
+            border: 2px solid purple;
+            padding: 15px;
+            background-color: lavender;
+            margin: 20px 0;
+            overflow: auto;
+        }
+
+        .tall-image {
+            width: 150px;
+            height: 300px;
+            background-color: red;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Problem 5: Float Practice</h1>
+
+<div class="instructions">
+    <h3>Your Tasks:</h3>
+    <p><strong>Task A:</strong> Float the blue "image" to the left so the text wraps around it</p>
+    <ul>
+        <li>Add float: left to .article-image</li>
+        <li>Add some margin-right and margin-bottom for spacing</li>
+    </ul>
+    <p><strong>Task B:</strong> Look at the green border around the article. Does it wrap around the floated image properly? Yes</p>
+    <p><strong>Task C:</strong> If the container doesn't wrap properly, add "overflow: auto" to the article</p>
+</div>
+
+<article>
+    <div class="article-image">Image Placeholder</div>
+    <p>This is a long paragraph that should wrap around the image. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>This is another paragraph that continues the article content. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>And here's a third paragraph to show how text flows around floated elements. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+</article>
+
+<div class="instructions">
+    <h3>Observe This Example:</h3>
+    <p>This article has a tall floated image. Notice what happens to the container's border:</p>
+</div>
+
+<div class="demo-article">
+    <div class="tall-image">Tall Image</div>
+    <p>This text wraps around the tall red image. But look at the purple border - does it contain the floated image?</p>
+    <p>Floated elements are removed from normal document flow, so containers don't automatically expand to contain them.</p>
+</div>
+
+<div class="instructions">
+    <h3>Understanding Float:</h3>
+    <ul>
+        <li><strong>float: left</strong> - Pushes element to left, other content wraps around right side</li>
+        <li><strong>float: right</strong> - Pushes element to right, other content wraps around left side</li>
+        <li><strong>Floated elements are removed from normal flow</strong> - Containers might not wrap around them</li>
+        <li><strong>Fix with overflow: auto</strong> - Forces container to contain floated children</li>
+    </ul>
+
+    <h4>Try This:</h4>
+    <p>After completing the tasks, try changing "float: left" to "float: right" on your image. How does the layout change?</p>
+</div>
+</body>
+</html>

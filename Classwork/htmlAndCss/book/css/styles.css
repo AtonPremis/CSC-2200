@@ -1,0 +1,44 @@
+body {
+    background-color: orange;
+}
+header {
+    background-color: cornflowerblue;
+    height: 20%;
+}
+img {
+    width: 8%;
+    height: 8%;
+    padding-top: 2px;
+    padding-left:2px;
+}
+img#promo {
+    width: 50%;
+    height: 50%;
+}
+h3 {
+    background-color: yellow;
+    display: inline;
+    position: relative;
+    left: 40%;
+    font-size: 40px;
+    top: -25px;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td,th {
+    border: solid 1px #000;
+}
+
+main, table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+ul {
+    width: 13%; /* Set a width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 0; /* Optional: Remove default padding */
+}

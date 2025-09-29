@@ -1,0 +1,90 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 2: Position Absolute</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            border: 3px solid red;
+            background-color: lightcoral;
+            padding: 20px;
+            margin: 20px;
+            /* TASK A: What positioning do you need to add here? */
+            /*position: relative;*/
+        }
+
+        h2 {
+            margin-top: 0;
+            color: darkred;
+        }
+
+        p {
+            color: darkred;
+        }
+
+        #close-btn {
+            background-color: white;
+            border: 2px solid red;
+            color: red;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+            /* TASK A: Write your positioning CSS here */
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .instructions {
+            background-color: lightgreen;
+            padding: 15px;
+            margin-top: 30px;
+            border: 2px solid green;
+            max-width: 600px;
+        }
+
+        .test-box {
+            width: 250px;
+            height: 150px;
+            border: 2px solid purple;
+            background-color: lavender;
+            padding: 15px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Problem 2: Position Absolute Practice</h1>
+
+<div class="box">
+    <h2>Modal Dialog Box</h2>
+    <p>This is some content in a dialog box. The X button should be in the top-right corner!</p>
+    <button id="close-btn">X</button>
+</div>
+
+<div class="test-box">
+    <h3>Another Box</h3>
+    <p>This box helps you see what happens when you position elements absolute.</p>
+</div>
+
+<div class="instructions">
+    <h3>Your Tasks:</h3>
+    <p><strong>Task A:</strong> Make the "X" button appear in the top-right corner of the red .box div</p>
+    <ul>
+        <li>Add the correct positioning to .box (what makes it a "positioned parent"?)</li>
+        <li>Add position: absolute to #close-btn</li>
+        <li>Use top and right properties to position the button</li>
+    </ul>
+    <p><strong>Task B:</strong> After you get it working, try commenting out the positioning on .box. What happens to the button? The button moves to the top-right of the page</p>
+    <p><strong>Remember:</strong> position: absolute positions relative to the nearest positioned ancestor (or the viewport if none exists)</p>
+</div>
+</body>
+</html>

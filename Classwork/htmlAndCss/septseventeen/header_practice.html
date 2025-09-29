@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 6: Header Layout Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .site-header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            height: 60px;
+            /* Add your container CSS here */
+
+        }
+
+        .logo {
+            width: 120px;
+            height: 40px;
+            background-color: orange;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            /* Add your logo positioning here */
+            float: left;
+        }
+
+        .main-nav {
+            /* Add your navigation positioning here */
+            float: left;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-right: 25px;
+            margin-left: 100px;
+            margin-top: 20px
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .main-nav a:hover {
+            background-color: #555;
+            border-radius: 3px;
+        }
+
+        .search-box {
+            /* Add your search box positioning here */
+            float: right;
+            margin-top: 15px;
+        }
+
+        .search-box input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .search-box button {
+            padding: 8px 12px;
+            background-color: orange;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 20px;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .instructions {
+            background-color: lightblue;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid blue;
+        }
+
+        .goal-layout {
+            background-color: #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+<div class="instructions">
+    <h2>Challenge: Create This Header Layout</h2>
+    <div class="goal-layout">
+        [Logo]                    [Home] [About] [Services] [Contact]                    [Search Box] [Go]
+    </div>
+    <h3>Requirements:</h3>
+    <ul>
+        <li><strong>Logo:</strong> Float left, stays on the left side</li>
+        <li><strong>Navigation:</strong> Should appear in the middle/left area after the logo</li>
+        <li><strong>Search Box:</strong> Float right, stays on the right side</li>
+        <li><strong>Everything should be vertically centered in the header</strong></li>
+    </ul>
+
+    <h3>Hints:</h3>
+    <ul>
+        <li>Use <code>float: left</code> for logo</li>
+        <li>Use <code>float: right</code> for search box</li>
+        <li>Navigation might need <code>float: left</code> too, or just let it flow naturally</li>
+        <li>You might need to adjust margins for proper spacing</li>
+    </ul>
+</div>
+
+<header class="site-header">
+    <div class="logo">LOGO</div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button type="button">Go</button>
+    </div>
+</header>
+
+<div class="content">
+    <h1>Website Content</h1>
+    <p>This is the main content area. The header above should have the logo on the left, navigation in the middle, and search on the right.</p>
+    <p>Try resizing your browser window to see how the layout responds.</p>
+</div>
+
+<div class="instructions">
+    <h3>Testing Your Solution:</h3>
+    <ul>
+        <li>Logo should be on the far left</li>
+        <li>Search box should be on the far right</li>
+        <li>Navigation should be between them</li>
+        <li>Everything should fit on one line (assuming reasonable screen width)</li>
+        <li>Elements should be vertically centered in the header</li>
+    </ul>
+
+    <h3>Common Issues:</h3>
+    <ul>
+        <li>If elements are stacking vertically, you need float properties</li>
+        <li>If search box is on the left, you need <code>float: right</code></li>
+        <li>If elements are too close together, add margins</li>
+        <li>If elements aren't vertically centered, check the header height and element positioning</li>
+    </ul>
+</div>
+</body>
+</html>

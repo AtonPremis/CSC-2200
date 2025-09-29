@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning Quiz - Fill in the Blanks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .fill-blank {
+            background-color: #ffeb3b;
+            padding: 2px 8px;
+            border: 2px dashed #ff9800;
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 2px solid #4caf50;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .code-snippet {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+
+        .scenario {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <h1>CSS Positioning & Float Quiz</h1>
+
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <p>Based on your work with the positioning exercises, fill in the blanks below. Replace each yellow highlighted section with the correct answer.</p>
+        <p><strong>How to complete:</strong> Edit this HTML file and replace the text inside the yellow boxes with your answers.</p>
+    </div>
+
+    <!-- SECTION 1: Position Relative -->
+    <div class="section">
+        <h2>1. Position Relative</h2>
+
+        <div class="question">
+            <p><strong>Question 1a:</strong> Position relative moves an element from <span class="fill-blank">where they would have been placed</span> but keeps <span class="fill-blank">the element</span> reserved in the document flow.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 1b:</strong> If you set <code>left: 30px</code> on a relatively positioned element, it moves the element <span class="fill-blank">30</span> pixels to the <span class="fill-blank">right</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 1c:</strong> When you move an element with position relative, other elements <span class="fill-blank">does not</span> move to fill the space because <span class="fill-blank">it has been taken out the document flow.</span>.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Position Absolute -->
+    <div class="section">
+        <h2>2. Position Absolute</h2>
+
+        <div class="question">
+            <p><strong>Question 2a:</strong> Position absolute positions an element relative to its nearest <span class="fill-blank">relative</span> ancestor.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 2b:</strong> To make a div a "positioned parent" for absolute children, you need to add <span class="fill-blank">position: relative</span> to that div's CSS.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 2c:</strong> If you forget to add positioning to the parent container, an absolutely positioned element will position relative to the <span class="fill-blank">body tag</span> instead.</p>
+        </div>
+
+        <div class="scenario">
+            <p><strong>Scenario:</strong> You want to put a close "X" button in the top-right corner of a modal dialog.</p>
+            <p><strong>Question 2d:</strong> You would add <code>position: <span class="fill-blank">relative</span></code> to the modal container and <code>position: <span class="fill-blank">absolute</span></code> to the X button.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Position Fixed -->
+    <div class="section">
+        <h2>3. Position Fixed</h2>
+
+        <div class="question">
+            <p><strong>Question 3a:</strong> Position fixed positions an element relative to the <span class="fill-blank">body</span> and the element stays in the same spot when you <span class="fill-blank">scroll</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 3b:</strong> When you use position fixed on a navigation bar, you often need to add <span class="fill-blank">FILL_IN_BLANK_14</span> to the main content to prevent it from being hidden behind the fixed nav.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: Display Properties -->
+    <div class="section">
+        <h2>4. Display: Inline vs Block vs Inline-Block</h2>
+
+        <div class="question">
+            <p><strong>Question 4a:</strong> <span class="fill-blank">Inline</span> elements ignore width and height properties, while <span class="fill-blank">inline-block</span> elements respect them.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 4b:</strong> If you want an element to flow inline with text but still respect width and height, you should use <span class="fill-blank">inline-block</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 4c:</strong> <span class="fill-blank">block</span> elements create line breaks before and after them, while <span class="fill-blank">inline</span> elements flow with the text.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Float -->
+    <div class="section">
+        <h2>5. Float</h2>
+
+        <div class="question">
+            <p><strong>Question 5a:</strong> Float removes an element from <span class="fill-blank">the document flow</span> and allows other content to <span class="fill-blank">wrap</span> around it.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 5b:</strong> The main problem with floated elements is that their containers might not <span class="fill-blank">adjust</span> properly around them.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 5c:</strong> To fix container collapse with floated children, you can add <span class="fill-blank">overflow: auto</span> to the parent container.</p>
+        </div>
+
+        <div class="scenario">
+            <p><strong>Scenario:</strong> You want text to wrap around an image on the left side.</p>
+            <p><strong>Question 5d:</strong> You would add <code>float: <span class="fill-blank">left</span></code> to the image CSS.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 6: Practical Applications -->
+    <div class="section">
+        <h2>6. When to Use Each Method</h2>
+
+        <div class="question">
+            <p><strong>Question 6a:</strong> To create a sticky navigation bar that stays at the top when scrolling, use <span class="fill-blank">position: fixed</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 6b:</strong> To put a close button in the corner of a dialog box, use <span class="fill-blank">top: 0 and right: 0</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 6c:</strong> To make small adjustments to an element's position without affecting other elements, use <span class="fill-blank">position: relative</span>.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 6d:</strong> To make images and text flow together like in a newspaper article, use <span class="fill-blank">float</span>.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 7: Code Completion -->
+    <div class="section">
+        <h2>7. Complete the CSS Code</h2>
+
+        <div class="question">
+            <p><strong>Question 7a:</strong> Complete this CSS to move an element 15px right and 5px down from its normal position:</p>
+            <div class="code-snippet">
+                #element {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: <span class="fill-blank">relative</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: <span class="fill-blank">15px</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: <span class="fill-blank">5px</span>;<br>
+                }
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 7b:</strong> Complete this CSS to position a badge in the top-right corner of a card:</p>
+            <div class="code-snippet">
+                .card {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: <span class="fill-blank">relative</span>;<br>
+                }<br><br>
+                .badge {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: <span class="fill-blank">absolute</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: <span class="fill-blank">0</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;right: <span class="fill-blank">0</span>;<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h3>How to Submit:</h3>
+        <p>Save this HTML file with your answers and submit it. Make sure to replace ALL the yellow highlighted sections with your answers!</p>
+        <p><strong>Tip:</strong> Open this file in a browser to see your answers as you type them.</p>
+    </div>
+</div>
+</body>
+</html>

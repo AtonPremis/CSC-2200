@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 3: Position Fixed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #main-nav {
+            background-color: darkblue;
+            color: white;
+            padding: 15px;
+            /* TASK: Add your positioning CSS here */
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        #main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        #main-nav li {
+            margin-right: 20px;
+        }
+
+        #main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #main-nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            /* TASK: You might need to add something here after you fix the nav */
+
+        }
+
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-left: 4px solid darkblue;
+        }
+
+        .instructions {
+            background-color: lightgreen;
+            padding: 15px;
+            margin: 20px;
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+<nav id="main-nav">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="instructions">
+        <h3>Your Task:</h3>
+        <p><strong>Make the blue navigation bar stick to the top of the browser window when you scroll.</strong></p>
+        <ul>
+            <li>Add position: fixed to #main-nav</li>
+            <li>Position it at the top of the viewport</li>
+            <li>Make sure it spans the full width</li>
+            <li>Fix any content overlap issues</li>
+        </ul>
+        <p><strong>Test it:</strong> Scroll down this page - the nav should stay at the top!</p>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2>Section 1: Home</h2>
+            <p>Welcome to our website! This is the home section with lots of content to scroll through. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+
+        <div class="section">
+            <h2>Section 2: About</h2>
+            <p>This is the about section. We have even more content here to make the page scroll. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+        </div>
+
+        <div class="section">
+            <h2>Section 3: Services</h2>
+            <p>Our services are amazing! More content to scroll through. Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+        </div>
+
+        <div class="section">
+            <h2>Section 4: Contact</h2>
+            <p>Contact us today! At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+            <p>Et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+        </div>
+
+        <div class="section">
+            <h2>More Content</h2>
+            <p>Keep scrolling to test your fixed navigation! Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

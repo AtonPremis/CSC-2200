@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Page Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            grid-template-rows: 80px 1fr;
+            min-height: 100vh;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            background: navy;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            background: lightblue;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background: lightgray;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto auto;
+            }
+
+            .header {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-layout">
+    <header class="header">Website Header</header>
+    <main class="main-content">
+        <h2>Main Content</h2>
+        <p>This is the main content area. On desktop, it sits next to the sidebar. On mobile, it stacks vertically.</p>
+    </main>
+    <aside class="sidebar">
+        <h3>Sidebar</h3>
+        <p>Navigation or additional content goes here.</p>
+    </aside>
+</div>
+</body>
+</html>

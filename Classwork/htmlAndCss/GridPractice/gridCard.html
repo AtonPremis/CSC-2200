@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .card-grid {
+            display: grid;
+            gap: 20px;
+            /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+            grid-template-columns: repeat(6, minmax(200px, 1fr));
+        }
+
+        .card {
+            background-color: #dbffc1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            border: 6px solid red;
+        }
+    </style>
+</head>
+<body>
+<h1>Responsive Card Grid</h1>
+<p>Resize your browser window to see the magic!</p>
+
+<div class="card-grid">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+    <div class="card">Card 4</div>
+    <div class="card">Card 5</div>
+    <div class="card">Card 6</div>
+</div>
+
+</body>
+</html>

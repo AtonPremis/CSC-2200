@@ -1,0 +1,250 @@
+/* ===== FLEXBOX PORTFOLIO STYLESHEET ===== */
+/* Basic styles provided - YOU MUST ADD ALL LAYOUT CODE */
+
+/* ===== RESET AND BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Base font size for rem calculations */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc; /* Cream background */
+    color: #333;
+}
+
+/* ===== HEADER STYLES ===== */
+/* TODO: You need to add flexbox properties to center the image and name */
+.header {
+    background: linear-gradient(135deg, #663399 0%, #8B4789 100%); /* Taco Bell purple gradient */
+    color: white;
+    padding: 1.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.2);
+    /* ADD FLEXBOX CODE HERE TO CENTER CONTENT */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.student-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 0.1875rem solid white;
+    overflow: hidden; /* This crops the image to fit the circle */
+    /* ADD FLEXBOX CODE HERE TO CENTER THE IMAGE */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.student-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes rectangular images fit properly in circle */
+}
+
+.student-name {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.3);
+}
+
+/* ===== MAIN LAYOUT ===== */
+/* TODO: You need to create a flexbox layout with sidebar (20%) and content (80%) */
+.main-container {
+    min-height: calc(100vh - 7.5rem);
+    /* ADD FLEXBOX CODE HERE FOR SIDEBAR/CONTENT LAYOUT */
+    display: flex;
+}
+
+/* ===== NAVIGATION SIDEBAR ===== */
+/* TODO: This should be exactly 20% width using flexbox properties */
+.nav-sidebar {
+    background-color: #663399; /* Taco Bell purple */
+    padding: 1.25rem 0;
+    box-shadow: 0.125rem 0 0.3125rem rgba(0,0,0,0.1);
+    /* ADD FLEXBOX CODE HERE FOR 20% WIDTH */
+    flex: 0 0 20%;
+}
+
+.nav-item {
+    display: block;
+    padding: 0.9375rem 1.5625rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-bottom: 0.0625rem solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    text-align: right;
+}
+
+.nav-item:hover {
+    background-color: #ff6b35; /* Taco Bell orange */
+    padding-right: 2.1875rem;
+    transform: translateX(-0.3125rem);
+}
+
+.nav-item:first-child {
+    border-top: 0.0625rem solid rgba(255,255,255,0.1);
+}
+
+.nav-item.current {
+    font-style: italic;
+    background-color: rgba(255, 107, 53, 0.3);
+    border-left: 0.25rem solid #ff6b35;
+}
+
+/* ===== CONTENT AREA ===== */
+/* TODO: This should take the remaining space (80%) using flexbox */
+.content-area {
+    padding: 1.875rem;
+    background-color: white;
+    margin: 1.25rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1);
+    /* ADD FLEXBOX CODE HERE TO TAKE REMAINING SPACE */
+    flex: 1;
+}
+
+.content-header {
+    color: #663399; /* Taco Bell purple */
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 0.1875rem solid #ff6b35; /* Taco Bell orange */
+    padding-bottom: 0.625rem;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.description p {
+    margin-bottom: 0.9375rem;
+}
+
+.highlight {
+    background-color: #ffa500; /* Orange highlight */
+    color: white;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+}
+
+/* ===== ACADEMICS PAGE STYLES ===== */
+.course {
+    background-color: #f9f9f9;
+    border-left: 0.25rem solid #663399;
+    padding: 0.9375rem;
+    margin-bottom: 1.25rem;
+    border-radius: 0.3125rem;
+}
+
+.course-title {
+    color: #663399;
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.course-code {
+    background-color: #ff6b35;
+    color: white;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 0.1875rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 0.625rem;
+}
+
+.course-status {
+    float: right;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 0.1875rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.course-status.completed {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.course-status.tbd {
+    background-color: #ffc107; /* Yellow */
+    color: #333;
+}
+
+.semester {
+    color: #888;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-bottom: 0.3125rem;
+}
+
+/* ===== CARTOONS PAGE STYLES ===== */
+/* TODO: You need to add float properties for text wrapping */
+.cartoon-section {
+    margin-bottom: 1.875rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.0625rem solid #eee;
+    /* ADD CODE HERE TO HANDLE FLOATED CONTENT */
+    float: none;
+}
+
+.cartoon-section:last-child {
+    border-bottom: none;
+}
+
+.cartoon-image {
+    width: 12.5rem;
+    height: 9.375rem;
+    border-radius: 0.625rem;
+    background: linear-gradient(45deg, #663399, #ff6b35);
+    margin: 0 1.25rem 0.9375rem 0;
+    padding: 0.5rem 0;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.2);
+    overflow: hidden;
+    /* ADD FLOAT CODE HERE TO MAKE TEXT WRAP AROUND IMAGES */
+    float: left;
+}
+
+.cartoon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.625rem;
+}
+
+.cartoon-title {
+    color: #663399;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.625rem;
+}
+
+.cartoon-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* TODO: Add media queries for mobile responsiveness */
+/* You need to:
+   1. Stack the main layout vertically on mobile
+   2. Convert sidebar to horizontal navigation
+   3. Remove float from cartoon images on mobile
+   4. Reduce font sizes for mobile
+*/
+
+/* ADD MEDIA QUERY HERE FOR SCREENS SMALLER THAN 768px */

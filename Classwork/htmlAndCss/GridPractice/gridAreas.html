@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page-layout {
+            display: grid;
+            grid-template-areas:
+                'header header'
+                'sidebar main'
+                'footer footer';
+            grid-template-columns: 100px 1fr;
+            grid-template-rows: 80px 250px 60px;
+            gap: 16px;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #77D4FC;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #29401e;
+        }
+
+        .main {
+            grid-area: main;
+            background-color: #b68ec6;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: #e6c504;
+        }
+    </style>
+</head>
+<body>
+<h1>Page Layout Example</h1>
+
+<div class="page-layout">
+    <div class="header">Header</div>
+    <div class="sidebar">Sidebar</div>
+    <div class="main">Main Content</div>
+    <div class="footer">Footer</div>
+</div>
+
+</body>
+</html>

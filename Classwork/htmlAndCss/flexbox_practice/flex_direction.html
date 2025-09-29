@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: DodgerBlue;
+            gap: 4px;
+            justify-content: space-around;
+
+        }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 250px
+        }
+        @media  only screen and (max-width: 1200px ) {
+            .flex-container {
+                flex-direction: column;
+            }
+            img {
+                width: 80%;
+                height: auto;
+                max-width: 250px
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>The flex-direction Property</h1>
+<p>The "flex-direction: column;" stacks the flex items vertically (from top to bottom):</p>
+<div class="flex-container">
+    <div><img src="imgs/dilbert.webp" alt="Dilber Image"> </div>
+    <div>
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>John !</td>
+                <td>24</td>
+                <td>20,000</td>
+            </tr>
+            <tr>
+                <td>Adam</td>
+                <td>31</td>
+                <td>35,000</td>
+            </tr>
+            <tr>
+                <td>Chris</td>
+                <td>27</td>
+                <td>32,000</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <img src="imgs/calvinSnow2.webp" alt="Calvin Snow Image">
+    </div>
+</div>
+</body>
+</html>

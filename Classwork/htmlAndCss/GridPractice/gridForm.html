@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Grid Form</title>
+    <style>
+        form {
+            display: grid;
+            padding: 1em;
+            background-color: #9c9c9c;
+            border: 1px solid black;
+            max-width: 600px;
+        }
+        form input  {
+            background-color: #FFFFFF;
+            border: 1px solid black;
+        }
+        form button {
+            background-color: lightblue;
+            padding: .7em;
+            width: 100%;
+            border: 0;
+            margin-top: 10px;
+        }
+        form button:hover {
+            background-color: gold;
+        }
+        @media (min-width: 600px){
+            body {
+                background-color: yellow;
+            }
+            form {
+                grid-template-columns: 200px 1fr;
+                grid-gap: 10px;
+            }
+            label {
+                text-align: right;
+            }
+            button {
+                grid-column: 2;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<form class="form1" action="" method="post">
+    <label for="firstName" class="first-name"> First Name</label>
+    <input id="firstName" type="text" />
+
+    <label for="lastName" class="last-name"> First Name</label>
+    <input id="lastName" type="text" />
+
+    <label for="age" class="age"> Age</label>
+    <input id="age" type="email" min="1" max="135" placeholder="your age"/>
+
+    <label for="email" class="email"> Email</label>
+    <input id="email" type="email" />
+
+    <label for="job" class="job"> Job</label>
+    <select id="job" size="3">
+        <option value="p"> Plumber </option>
+        <option value="s"> Student </option>
+        <option value="t"> Teacher Of Students</option>
+    </select>
+
+
+    <label for="comments" class="comments"> Comments:</label>
+    <textarea id="comments" rows="2" > </textarea>
+
+    <button> Submit! </button>
+</form>
+</body>
+</html>

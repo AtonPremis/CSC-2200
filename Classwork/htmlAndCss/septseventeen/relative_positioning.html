@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 1: Position Relative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            border: 2px solid blue;
+            padding: 20px;
+            background-color: lightblue;
+        }
+
+        p {
+            background-color: yellow;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            position: static;
+        }
+
+        /*
+        TASK A: Write CSS here to move the "Second paragraph"
+        20px to the right and 10px down from its normal position.
+        */
+
+        #special {
+            /* Write your CSS here */
+            position: relative;
+            top: 10px;
+            left: 20px;
+        }
+
+        .instructions {
+            background-color: lightgreen;
+            padding: 15px;
+            margin-top: 30px;
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+<h1>Problem 1: Position Relative Practice</h1>
+
+<div class="container">
+    <p>First paragraph - I stay in my normal position</p>
+    <p id="special">Second paragraph - Move me 20px right and 10px down!</p>
+    <p>Third paragraph - What happens to me when #special moves? This paragraph doesn't get affected</p>
+</div>
+
+<div class="instructions">
+    <h3>Your Tasks:</h3>
+    <p><strong>Task A:</strong> Add CSS to #special to move it 20px right and 10px down using position: relative</p>
+    <p><strong>Task B:</strong> After you add the CSS, observe what happens to the space where "Second paragraph" normally would be. Does the third paragraph move up to fill the gap?</p>
+    <p><strong>Remember:</strong> position: relative moves an element from where it would normally appear, but keeps its original space reserved.</p>
+</div>
+</body>
+</html>
