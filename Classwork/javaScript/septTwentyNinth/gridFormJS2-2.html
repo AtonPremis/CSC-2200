@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Grid Form </title>
+    <style>
+        form {
+            display: grid;
+            padding: 1em;
+            background: #f9f9f9;
+            border: 1px solid #c1c1c1;
+            margin: 2rem auto 0 auto;
+            max-width: 600px;
+            padding: 1em;
+            align-items: center;
+        }
+        form input {
+            background: #fff;
+            border: 1px solid #9c9c9c;
+        }
+        form button {
+            background: lightgrey;
+            padding: 0.7em;
+            width: 100%;
+            border: 0;
+        }
+        form button:hover {
+            background: gold;
+        }
+
+        label {
+            padding: 0.5em 0.5em 0.5em 0;
+        }
+
+        input {
+            padding: 0.7em;
+            margin-bottom: 0.5rem;
+        }
+        input:focus {
+            outline: 3px solid gold;
+        }
+        #header {
+            font-size: 25px;
+            grid-column: 2 / 3;
+        }
+
+        .error {
+            color: red;
+        }
+
+        @media (min-width:  1000px) {
+            form {
+                grid-template-columns: 200px 1fr;
+                grid-gap: 16px;
+            }
+            label {
+                text-align: right;
+                grid-column: 1 / 2;
+            }
+            input,
+            button, #results{
+                grid-column: 2 / 3;
+            }
+            #results {
+                background-color: yellow;
+            }
+        }
+    </style>
+    <script>
+        function calcIt() {
+            // let x = "Happy"; String
+            // let x = 3.14; Number
+            // let x = 3; Number
+            // let x; undefined
+            // let x = document.getElementById("miles").value; String
+            // let x = document.getElementById("fkjdsnfokn"); Type of object that is undefined
+            // let x = []; Object/Empty Array
+            // let x = {}; Object/Empty Object
+            // let x = "Happy" / 10; Number because NaN is considered a number
+            // let x = "22"; String
+            // x += 44; Outputs as "2244"
+            // let x = true; Boolean
+            checkType(x);
+        }
+
+        function checkType(inX) {
+            let msg = `The type is ${typeof inX}`;
+            alert(msg);
+        }
+    </script>
+</head>
+<form>
+    <span id="header"> MPG Calculator V2</span>
+    <label for="miles" class="Miles">Miles:</label>
+    <input id="miles" type="text">
+    <label for="gallons" class="Gallons">Gallons:</label>
+    <input id="gallons" type="text">
+    <button type='button' onClick="calcIt()">Submit</button>
+    <br />
+    <label for="results" class="Gallons">Results:</label>
+    <div id="results"> </div>
+</form>
+</html>
