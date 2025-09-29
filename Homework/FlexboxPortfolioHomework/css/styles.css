@@ -34,6 +34,7 @@ body {
 .student-image {
     width: 5rem;
     height: 5rem;
+    margin-right: 1rem;
     border-radius: 50%;
     border: 0.1875rem solid white;
     overflow: hidden; /* This crops the image to fit the circle */
@@ -280,5 +281,9 @@ body {
 
     .content-area {
         padding: 1.25rem;
+    }
+
+    .cartoon-text {
+        text-align: left;
     }
 }
