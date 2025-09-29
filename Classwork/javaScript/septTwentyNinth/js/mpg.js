@@ -5,16 +5,20 @@ function calcMPG() {
     let errorString = "";
 
     if (isNaN(miles)) {
-        errorString = "Miles must be a number";
+        errorString = "<span style='color: red'>Miles must be a number</span>";
     }
 
     if (isNaN(gallons)) {
-        errorString += "Gallons must be a number";
+        errorString += "<span class='error'>Gallons must be a number</span>";
     }
 
     if (errorString == "") {
         let mpg = miles / gallons;
+        errorString = `MPG: ${mpg}`;
     }
+
+    let results = document.getElementById("results");
+    results.innerHTML = errorString;
 
     console.log(`Miles: ${miles}`);
     console.log(`Gallons: ${gallons}`);
