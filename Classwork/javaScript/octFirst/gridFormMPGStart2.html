@@ -59,39 +59,30 @@
             }
         }
     </style>
+
     <script>
-        "use strict";
-        function doIt() {
-            // let curVal = document.getElementById("age").value;
-            // document.getElementById("results").innerHTML = "blah";
-            let x = "happy day";
+        function genPW(size, myString = "Happy") {
+            alert(`size: ${size}`);
+            alert(`string: ${myString}`);
+            let pwSize = parseInt(size);
+            let retStr = "";
+            for (let i = 0; i < pwSize; i++) {
+                retStr += nextChar();
+            }
+            document.getElementById("results").innerHTML = retStr;
         }
 
-        function checkAge() {
-            // alert(x)
-            let myVar = null;
-            let age = document.getElementById("age").value;
-            let msg = "";
-            if (parseInt(age) === 16) {
-                let msg = "You Can Drive";
-            } else if (parseInt(age) > 21) {
-                msg = msg + "You drive and drink";
-                msg += ` not same time age: ${age}`;
-            } else {
-                msg = "You are too young";
-            }
-            document.getElementById("results").innerHTML = msg;
+        function nextChar() {
+            const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            const SYMB = "!@#$%^&*()";
+            const nChar = parseInt(document.getElementById("length").value);
         }
     </script>
+
 </head>
 <body onLoad="doIt()">
 <form>
-    <span id="header">Age Checker</span>
-    <label for="miles" class="Miles">Name:</label>
-    <input id="miles" type="text">
-    <label for="age" class="Age">Age:</label>
-    <input id="age" type="text" onkeyup="doIt()">
-    <button type='button' onClick="checkAge()">Submit</button>
+    <button type='button' onClick="genPW(6, 'dde')">Submit</button>
     <br />
     <label for="results" class="Gallons">Results:</label>
     <div id="results"> </div>
