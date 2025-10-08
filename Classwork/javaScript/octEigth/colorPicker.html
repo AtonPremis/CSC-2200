@@ -80,11 +80,11 @@
 
     backgroundColorInput.addEventListener("input", function() {
         document.body.style.backgroundColor = backgroundColorInput.value;
-        backgroundValueLabel.innerHTML = backgroundColorInput.value;
+        backgroundValueLabel.textContent = backgroundColorInput.value;
     })
     textColorInput.addEventListener("input", function() {
         document.body.style.color = textColorInput.value;
-        textValueLabel.innerHTML = textColorInput.value;
+        textValueLabel.textContent = textColorInput.value;
     })
 </script>
 </body>

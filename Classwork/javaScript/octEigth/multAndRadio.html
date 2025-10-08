@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Select and Radio Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .section {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        button {
+            background: #0077be;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Multi-Select and Radio Buttons</h1>
+<p><strong>Open Console (F12) to see results!</strong></p>
+
+<!-- SELECT WITH MULTIPLE ATTRIBUTE -->
+<div class="section">
+    <h3>Multi-Select Dropdown</h3>
+    <p>Hold Ctrl (Windows) or Cmd (Mac) to select multiple</p>
+
+    <label>Pick your toppings:</label>
+    <select id="toppings" multiple size="5">
+        <option value="Pepperoni">Pepperoni</option>
+        <option value="Mushrooms">Mushrooms</option>
+        <option value="Onions">Onions</option>
+        <option value="Peppers">Peppers</option>
+        <option value="Olives">Olives</option>
+    </select>
+</div>
+
+<!-- RADIO BUTTON GROUPS -->
+<div class="section">
+    <h3>Radio Button Groups</h3>
+
+    <div>
+        <strong>Size:</strong><br>
+        <input type="radio" name="size" value="Small" id="s1" checked>
+        <label for="s1">Small</label>
+        <input type="radio" name="size" value="Medium" id="s2">
+        <label for="s2">Medium</label>
+        <input type="radio" name="size" value="Large" id="s3">
+        <label for="s3">Large</label>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <strong>Crust:</strong><br>
+        <input type="radio" name="crust" value="Thin" id="c1" checked>
+        <label for="c1">Thin</label>
+        <input type="radio" name="crust" value="Regular" id="c2">
+        <label for="c2">Regular</label>
+        <input type="radio" name="crust" value="Thick" id="c3">
+        <label for="c3">Thick</label>
+    </div>
+</div>
+
+<button id="showResults">Show Results in Console</button>
+
+<script>
+    "use strict";
+
+    document.getElementById('showResults').addEventListener('click', function() {
+        console.clear();
+        console.log('=== RESULTS ===\n');
+
+        const topSelect = document.querySelector('#toppings');
+        const selectItems = topSelect.selectedOptions;
+        console.log(`selected: ${selectItems.length}`);
+        for (let i = 0; i < selectItems.length; i++) {
+            console.log(`selected: ${selectItems[i].value}`);
+        }
+    });
+</script>
+</body>
+</html>
