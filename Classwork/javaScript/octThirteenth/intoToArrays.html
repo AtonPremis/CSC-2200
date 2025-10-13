@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h2>Intro To Arrays</h2>
+        <button id="myButton" type="button" onClick="doList()">Click To Start</button>
+        <div id="results">Results Here: </div>
+    </body>
+    <script>
+        document.getElementById("myButton").addEventListener("click", () => {
+            const result = document.getElementById("results");
+            let myList= ["Apples", "Bananas", "Cakes", 3387678];
+            myList.pop();
+            myList.push(9);
+            myList.shift();
+            myList.unshift("Oranges");
+            let res = "<ol>";
+            // for (let i = 0; i < myList.length; i++) {
+            //     res += "<li>" + myList[i] + "</li>";
+            // }
+            let someFruits = myList.slice(0, -1);
+            someFruits.forEach((item) => {
+                res += "<li>" + item + "</li>";
+            })
+            res += "</ol>";
+            if (myList.includes("Bananas")) {
+                alert("We ahve bananas");
+            }
+            let longNames = myList.filter(item => item.length > 5);
+            alert(longNames);
+            result.innerHTML = res;
+        });
+    </script>
+</html>
