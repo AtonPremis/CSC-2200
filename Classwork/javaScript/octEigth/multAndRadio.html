@@ -80,6 +80,8 @@
 
 <button id="showResults">Show Results in Console</button>
 
+<div id="result"> </div>
+
 <script>
     "use strict";
 
@@ -89,9 +91,12 @@
 
         const topSelect = document.querySelector('#toppings');
         const selectItems = topSelect.selectedOptions;
+        const result = document.querySelector("#result");
+        result.textContent = "";
         console.log(`selected: ${selectItems.length}`);
         for (let i = 0; i < selectItems.length; i++) {
             console.log(`selected: ${selectItems[i].value}`);
+            result.textContent += `selected: ${selectItems[i].value} `;
         }
     });
 </script>
