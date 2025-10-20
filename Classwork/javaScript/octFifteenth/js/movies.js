@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
             description.value = description.value.slice(0, -2);
         }
     })
-    document.addEventListener("submit", function() {
+    form.addEventListener("submit", function() {
 
-        })
+    })
 })
