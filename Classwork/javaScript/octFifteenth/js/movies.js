@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector("movieFrom");
+    const form = document.getElementById("movieFrom");
     const description = document.getElementById("description");
     const characterCount = document.getElementById("charCount");
     const maxInput = 15;
@@ -17,7 +17,19 @@ document.addEventListener("DOMContentLoaded", function() {
             description.value = description.value.slice(0, -2);
         }
     })
-    form.addEventListener("submit", function() {
+    document.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const descr = document.getElementById("description").value.trim();
+        const title = document.getElementById("title").value.trim();
+        const genre = document.getElementById("genre").value;
+        const haveSeen = document.getElementById("seen").checked;
 
+        if (title.length < 10) {
+            let titleError = document.getElementById("titleError");
+            titleError.style.display = "block";
+            return;
+        } else {
+            titleError.style.display = "none";
+        }
     })
 })

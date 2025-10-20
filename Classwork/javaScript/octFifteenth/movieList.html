@@ -114,6 +114,11 @@
                 grid-column: 1;
             }
         }
+
+        #titleError {
+            color: red;
+            display: none;
+        }
     </style>
 
     <script src="js/movies.js"></script>
@@ -126,6 +131,7 @@
     <label>
         Movie Title:
         <input type="text" id="title" required>
+        <div id="titleError">Atleast 10 characters</div>
     </label>
 
     <label>
