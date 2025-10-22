@@ -115,7 +115,7 @@
             }
         }
 
-        #titleError {
+        #titleError, #descriptionError {
             color: red;
             display: none;
         }
@@ -131,7 +131,7 @@
     <label>
         Movie Title:
         <input type="text" id="title" required>
-        <div id="titleError">Atleast 10 characters</div>
+        <div id="titleError">At least 10 characters</div>
     </label>
 
     <label>
@@ -147,7 +147,8 @@
     <label style="grid-column: 1 / span 2;">
         Description:
         <textarea id="description" maxlength="15"></textarea>
-        <div class="char-counter" id="charCount">150 characters left</div>
+        <span id="descriptionError">At least 10 characters</span>
+        <span class="char-counter" id="charCount">150 characters left</span>
     </label>
 
     <div class="checkbox-area">
