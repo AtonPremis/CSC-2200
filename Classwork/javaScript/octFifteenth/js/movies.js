@@ -28,8 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
             let titleError = document.getElementById("titleError");
             titleError.style.display = "block";
             return;
-        } else {
-            titleError.style.display = "none";
         }
+
+        titleError.style.display = "none";
+
     })
 })
