@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="css/styles.css"/>
+        <script src="js/tracker.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Inventory Tracker</h1>
+            <p>Track Items, counts, and price easily</p>
+        </header>
+        <main>
+            <form id="inventoryFrom">
+                <label>
+                    Item Name:
+                    <input type="text" id="itemName" required>
+                </label>
+                <label>
+                    Count:
+                    <input type="number" id="count" required>
+                </label>
+                <label>
+                    Price per Item ($):
+                    <input type="number" id="pricePerItem" required>
+                </label>
+
+                <button type="submit">Add Item</button>
+            </form>
+            <div id="inventory">
+                <h2>column 2</h2>
+            </div>
+        </main>
+
+    </body>
+</html>
