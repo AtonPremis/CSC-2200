@@ -19,18 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     document.addEventListener("submit", function(event) {
         event.preventDefault();
-        const descr = document.getElementById("description").value.trim();
+        const descr = description.value.trim();
         const title = document.getElementById("title").value.trim();
         const genre = document.getElementById("genre").value;
         const haveSeen = document.getElementById("seen").checked;
+        const titleError = document.getElementById("titleError");
+        titleError.style.display = "none";
 
         if (title.length < 10) {
             let titleError = document.getElementById("titleError");
             titleError.style.display = "block";
             return;
         }
-
-        titleError.style.display = "none";
 
     })
 })
