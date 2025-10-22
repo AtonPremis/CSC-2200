@@ -55,16 +55,19 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
     function displayMovies() {
+        let moviesList = document.getElementById("movieList");
+        moviesList.innerHTML = "";
         for (let i = 0; i < titlesList.length; i++) {
             let divMovieItem = document.createElement("div");
             divMovieItem.className = "movie-item"
             divMovieItem.innerHTML = `
                 <strong>${titlesList[i]}</strong>
-                <br/>
-                <p>${genresList[i]}</p>
+                <br/> <p>${genresList[i]}</p>
                 <p>${seenList[i]}</p>
                 <p>${descriptionsList[i]}</p>
             `;
+            moviesList.appendChild(divMovieItem);
+
         }
     }
 })
