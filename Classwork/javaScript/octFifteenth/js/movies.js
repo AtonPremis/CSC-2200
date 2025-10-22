@@ -45,9 +45,26 @@ document.addEventListener("DOMContentLoaded", function() {
         if (gotError) {
             return;
         }
+
         titlesList.push(title);
         genresList.push(genre);
         seenList.push(haveSeen);
         descriptionsList.push(descriptionText);
+
+        displayMovies();
     })
+
+    function displayMovies() {
+        for (let i = 0; i < titlesList.length; i++) {
+            let divMovieItem = document.createElement("div");
+            divMovieItem.className = "movie-item"
+            divMovieItem.innerHTML = `
+                <strong>${titlesList[i]}</strong>
+                <br/>
+                <p>${genresList[i]}</p>
+                <p>${seenList[i]}</p>
+                <p>${descriptionsList[i]}</p>
+            `;
+        }
+    }
 })
