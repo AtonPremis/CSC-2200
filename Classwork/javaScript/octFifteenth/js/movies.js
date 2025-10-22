@@ -65,9 +65,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br/> <p>${genresList[i]}</p>
                 <p>${seenList[i]}</p>
                 <p>${descriptionsList[i]}</p>
+                <button onClick="${deleteIt(i)}">Delete</button>
             `;
             moviesList.appendChild(divMovieItem);
 
         }
+    }
+    function deleteIt(index) {
+
     }
 })
