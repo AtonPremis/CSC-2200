@@ -26,6 +26,10 @@ form {
     padding: 2rem;
 }
 
+form button {
+    width: 101.5%;
+}
+
 label {
     font-size: 1.2rem;
 }
@@ -44,4 +48,29 @@ input {
     gap: 1rem;
     background-color: #ff7f7f;
     padding: 2rem;
+}
+
+#inventory h3 {
+    text-align: right;
+}
+
+.inventoryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #a65c5c;
+}
+
+.inventoryItem:last-child {
+    border-bottom: none;
+}
+
+.inventoryItem button {
+    height: 2rem;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
 }
