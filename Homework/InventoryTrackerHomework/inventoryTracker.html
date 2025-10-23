@@ -19,38 +19,19 @@
                 </label>
                 <label>
                     Count:
-                    <input type="number" id="count" required>
+                    <input type="number" id="count" min="1" step="1" required>
                 </label>
                 <label>
                     Price per Item ($):
-                    <input type="number" id="pricePerItem" required>
+                    <input type="number" id="pricePerItem" min="0" step="0.01" required>
                 </label>
 
                 <button type="submit">Add Item</button>
             </form>
             <div id="inventory">
                 <h2>Inventory List</h2>
-                <div id="inventoryList">
-                    <div class="inventoryItem">
-                        <p>Apples</p>
-                        <p>Count: 3</p>
-                        <p>$1.00 Each</p>
-                        <button>Reduce</button>
-                    </div>
-                    <div class="inventoryItem">
-                        <p>Apples</p>
-                        <p>Count: 3</p>
-                        <p>$1.00 Each</p>
-                        <button>Reduce</button>
-                    </div>
-                    <div class="inventoryItem">
-                        <p>Apples</p>
-                        <p>Count: 3</p>
-                        <p>$1.00 Each</p>
-                        <button>Reduce</button>
-                    </div>
-                </div>
-                <h3>Total Value: $</h3>
+                <div id="inventoryList"></div>
+                <h3 id="totalValue">Total Value: $</h3id>
             </div>
         </main>
 

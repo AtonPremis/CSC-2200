@@ -26,6 +26,10 @@ form {
     padding: 2rem;
 }
 
+button {
+    height: 2rem;
+}
+
 form button {
     width: 101.5%;
 }
@@ -50,7 +54,7 @@ input {
     padding: 2rem;
 }
 
-#inventory h3 {
+#totalValue {
     text-align: right;
 }
 
@@ -63,10 +67,6 @@ input {
 
 .inventoryItem:last-child {
     border-bottom: none;
-}
-
-.inventoryItem button {
-    height: 2rem;
 }
 
 @media (max-width: 768px) {
