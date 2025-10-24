@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
         priceList.push(pricePerItem);
 
         displayItems();
+        document.getElementById("itemName").value = "";
+        document.getElementById("count").value = "";
+        document.getElementById("pricePerItem").value = "";
     })
 
     function displayItems() {
