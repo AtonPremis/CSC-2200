@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("movieFrom");
     const descriptionElement = document.getElementById("description");
     const characterCount = document.getElementById("charCount");
+    let moviesList = document.getElementById("movieList");
     const maxInput = 15;
     let titlesList = [];
     let genresList = [];
@@ -52,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
         descriptionsList.push(descriptionText);
 
         displayMovies();
+        form.reset();
     })
 
     function displayMovies() {
-        let moviesList = document.getElementById("movieList");
         moviesList.innerHTML = "";
         for (let i = 0; i < titlesList.length; i++) {
             let divMovieItem = document.createElement("div");
@@ -65,13 +66,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br/> <p>${genresList[i]}</p>
                 <p>${seenList[i]}</p>
                 <p>${descriptionsList[i]}</p>
-                <button onClick="${deleteIt(i)}">Delete</button>
+                <button data-index="${i}">Delete ${i}</button>
             `;
             moviesList.appendChild(divMovieItem);
 
         }
     }
-    function deleteIt(index) {
-
-    }
+    moviesList.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON") {
+            const index = event.target.getAttribute("data-index");
+            titlesList.splice(index, 1);
+            genresList.splice(index, 1);
+            seenList.splice(index, 1);
+            descriptionsList.splice(index, 1);
+            displayMovies();
+        }
+    })
 })
