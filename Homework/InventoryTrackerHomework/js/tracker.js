@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const totalValue = document.getElementById("totalValue");
+    let inventoryList = document.getElementById("inventoryList");
     let itemList = [];
     let countList = [];
     let priceList = [];
@@ -21,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function displayItems() {
         let totalValueNumber = 0;
-        let inventoryList = document.getElementById("inventoryList");
         inventoryList.innerHTML = "";
         for (let i = 0; i < itemList.length; i++) {
             let inventoryItem = document.createElement("div");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>${itemList[i]}</p>
                 <p>Count: ${countList[i]}</p>
                 <p>$${priceList[i]} each</p>
-                <button>Reduce</button>
+                <button data-index="${i}">Reduce</button>
             `;
             inventoryList.appendChild(inventoryItem);
             totalValueNumber += parseFloat(priceList[i]) * parseInt(countList[i]);
@@ -38,4 +38,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         totalValue.innerHTML = `Total Value: $${totalValueNumber}`;
     }
+
+    inventoryList.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON") {
+            const index = event.target.getAttribute("data-index");
+            countList[index] -= 1;
+            if (countList[index] === 0) {
+                itemList.splice(index, 1);
+                countList.splice(index, 1);
+                priceList.splice(index, 1);
+                displayItems();
+                return;
+            }
+
+            displayItems();
+        }
+    })
 })
