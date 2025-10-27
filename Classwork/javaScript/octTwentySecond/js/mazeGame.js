@@ -31,18 +31,32 @@ function drawBoard() {
     })
 }
 
+function movePlayer(rowOffset, columnOffset) {
+    let newRow = playerPosition.row + rowOffset;
+    let newColumn = playerPosition.col + columnOffset;
+    if (maze[newRow][newColumn] === 1) {
+        return;
+    }
+
+    maze[playerPosition.row][playerPosition.col] = 0;
+    playerPosition.row = newRow;
+    playerPosition.col = newColumn;
+    maze[newRow][newColumn] = "P";
+    drawBoard();
+}
+
 document.addEventListener('keydown', (event) => {
     if (event.key === "ArrowUp") {
-        alert("up we go");
+        movePlayer(-1, 0);
     }
     if (event.key === "ArrowDown") {
-        alert("down we go");
+        movePlayer(1, 0);
     }
     if (event.key === "ArrowLeft") {
-        alert("left we go");
+        movePlayer(0, -1);
     }
     if (event.key === "ArrowRight") {
-        alert("right we go");
+        movePlayer(0, 1);
     }
 
 })
