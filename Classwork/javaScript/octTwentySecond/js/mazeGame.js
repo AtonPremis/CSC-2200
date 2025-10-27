@@ -35,4 +35,14 @@ document.addEventListener('keydown', (event) => {
     if (event.key === "ArrowUp") {
         alert("up we go");
     }
+    if (event.key === "ArrowDown") {
+        alert("down we go");
+    }
+    if (event.key === "ArrowLeft") {
+        alert("left we go");
+    }
+    if (event.key === "ArrowRight") {
+        alert("right we go");
+    }
+
 })
