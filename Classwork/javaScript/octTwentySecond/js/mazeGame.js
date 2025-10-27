@@ -1,4 +1,4 @@
-const maze = [
+let maze = [
     [1, 1, 1, 1, 1],
     [1, 0, 0, 0, 1],
     [1, 0, 1, 0, 1],
@@ -7,6 +7,8 @@ const maze = [
 ];
 
 let playerPosition = {row: 3, col: 1};
+let goalPosition = {row: 3, col: 3};
+let won = false;
 
 function drawBoard() {
     const gameBoard = document.getElementById('gameBoard');
@@ -34,7 +36,7 @@ function drawBoard() {
 function movePlayer(rowOffset, columnOffset) {
     let newRow = playerPosition.row + rowOffset;
     let newColumn = playerPosition.col + columnOffset;
-    if (maze[newRow][newColumn] === 1) {
+    if (maze[newRow][newColumn] === 1 || won) {
         return;
     }
 
@@ -43,6 +45,11 @@ function movePlayer(rowOffset, columnOffset) {
     playerPosition.col = newColumn;
     maze[newRow][newColumn] = "P";
     drawBoard();
+
+    if (playerPosition.row === goalPosition.row && playerPosition.col === goalPosition.col) {
+        won = true;
+        document.getElementById("restartButton").style.display = "inline";
+    }
 }
 
 document.addEventListener('keydown', (event) => {
@@ -58,5 +65,19 @@ document.addEventListener('keydown', (event) => {
     if (event.key === "ArrowRight") {
         movePlayer(0, 1);
     }
+})
 
+document.addEventListener("click", () => {
+    playerPosition = {row: 3, col: 1};
+    goalPosition = {row: 3, col: 3};
+    won = false;
+    maze = [
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1],
+        [1, "P", 1, "G", 1],
+        [1, 1, 1, 1, 1],
+    ];
+    drawBoard();
+    document.getElementById("restartButton").style.display = "none";
 })
