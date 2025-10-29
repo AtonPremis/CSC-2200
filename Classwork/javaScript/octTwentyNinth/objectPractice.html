@@ -5,7 +5,52 @@
         <title>Object Practice</title>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                
+                let user = {
+                    name: "fred",
+                    highScore: 0,
+                    scores: [20, 5, 30, 25],
+                    gamePosition: {
+                        X: -20,
+                        Y: 40,
+                        Z: 9,
+                    },
+                    pets: [
+                        {
+                            dog: "spot"
+                        },
+                        {
+                            cat: "whiskers"
+                        }
+                    ]
+                }
+                let myObject = {
+                    "food": "Pizza",
+                    "school": "AU",
+                    "age": 29,
+                    "years and": 13
+                }
+
+                user.scores.push(99);
+                alert(user.scores);
+                alert(user.gamePosition.Z);
+                alert(user.pets[0].dog);
+                user.pets.push({
+                    horse: "pegasus"
+                })
+                alert(user.pets[2].horse);
+
+                myObject.season= "Summer";
+                myObject["bracket notation"] = "[]";
+
+                alert(myObject.season + myObject["bracket notation"]);
+
+                let total = myObject.age + myObject["years and"];
+
+                document.getElementById("results").innerHTML = total;
+
+                let union = prompt("Do you want to say?");
+                alert(`Got The ${union}!`);
+                alert(`Got The ${myObject.union}!`);
             });
         </script>
     </head>
