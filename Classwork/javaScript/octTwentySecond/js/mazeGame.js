@@ -48,7 +48,7 @@ function movePlayer(rowOffset, columnOffset) {
 
     if (playerPosition.row === goalPosition.row && playerPosition.col === goalPosition.col) {
         won = true;
-        document.getElementById("restartButton").style.display = "inline";
+        document.getElementById("restartButton").style.display = "block";
     }
 }
 
@@ -67,17 +67,20 @@ document.addEventListener('keydown', (event) => {
     }
 })
 
-document.addEventListener("click", () => {
-    playerPosition = {row: 3, col: 1};
-    goalPosition = {row: 3, col: 3};
-    won = false;
-    maze = [
-        [1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1],
-        [1, "P", 1, "G", 1],
-        [1, 1, 1, 1, 1],
-    ];
-    drawBoard();
-    document.getElementById("restartButton").style.display = "none";
+document.addEventListener("click", (event) => {
+    if (event.target.tagName === "BUTTON") {
+        playerPosition = {row: 3, col: 1};
+        goalPosition = {row: 3, col: 3};
+        won = false;
+        maze = [
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 1],
+            [1, 0, 1, 0, 1],
+            [1, "P", 1, "G", 1],
+            [1, 1, 1, 1, 1],
+        ];
+        drawBoard();
+        document.getElementById("restartButton").style.display = "none";
+    }
+
 })
