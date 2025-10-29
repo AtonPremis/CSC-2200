@@ -5,7 +5,29 @@
         <title>Object Practice</title>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                
+                let users = [
+                    {
+                        name: "Jake",
+                        age: 28
+                    },
+                    {
+                        name: "Jon",
+                        age: 21
+                    },
+                    {
+                        name: "Jan",
+                        age: 23
+                    }
+                ];
+
+                let sum = 0;
+                users.forEach(user => {
+                    sum += user.age;
+                });
+
+                let deck = [
+                    {img: "queensHearts", value: 10, display: "Queens"}
+                ];
             });
         </script>
     </head>
