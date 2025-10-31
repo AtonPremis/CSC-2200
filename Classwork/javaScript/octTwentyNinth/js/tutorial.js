@@ -13,7 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let output = document.getElementById("output");
         output.innerHTML = "";
         people.forEach(person => {
-            
+            let divPerson = document.createElement("div");
+            divPerson.classList.add("person");
+            divPerson.innerHTML = `
+                <p>Name: ${person.name}</p>
+                <p>Age: ${person.age}</p>
+                <p>Favorite Emoji: ${person.favorite}</p>
+            `;
+            output.appendChild(divPerson);
         })
     }
 
