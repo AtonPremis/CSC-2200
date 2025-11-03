@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tile Row/Col Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #board {
+            display: grid;
+            grid-template-columns: repeat(2, 120px);
+            gap: 15px;
+        }
+        .tile {
+            width: 120px;
+            height: 120px;
+            background: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            user-select: none;
+        }
+        .tile:hover {
+            background: deepskyblue;
+        }
+        .flipped {
+            background: gold;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+<h1>🎯 Tile Row/Col Demo</h1>
+<p>Click any tile — it will flip and log its
+    <code>row</code> and <code>col</code> to the console.</p>
+<div id="board"></div>
+
+<script>
+    const boardSize = 2;
+    const board = document.getElementById("board");
+
+    for (let i = 0; i < boardSize; i++) {
+        for (let j = 0; j < boardSize; j++) {
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            tile.textContent = `(${i},${j})`;
+
+            // Store position in data attributes
+            tile.dataset.row = i;
+            tile.dataset.col = j;
+
+            // Click handler
+            tile.addEventListener("click", (event) => {
+                const row = event.currentTarget.dataset.row;
+                const col = event.currentTarget.dataset.col;
+                console.log(`You clicked tile at row ${row}, column ${col}`);
+
+                // Toggle "flipped" style
+                event.currentTarget.classList.toggle("flipped");
+            });
+
+            board.appendChild(tile);
+        }
+    }
+</script>
+</body>
+</html>
