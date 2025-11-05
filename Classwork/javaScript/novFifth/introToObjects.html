@@ -18,13 +18,24 @@
                     let outText = `<h2>All Students</h2>`;
                     outText += `<ol>`;
                     for (let i = 0; i < this.list.length; i++) {
-                        outText += `<li>${this.list[i].name}</li>`;
+                        outText += `<li>${this.list[i].name} - ${this.list[i].grade}</li>`;
                     }
                     outText += `</ol>`;
                     return outText;
                 },
                 bestStudent: function() {
-                    
+                    if (this.list.length === 0) {
+                        return `<h2>Empty List</h2>`;
+                    }
+
+                    let highestGrade = this.list[0];
+                    this.list.forEach(student => {
+                        if (student.grade > highestGrade.grade) {
+                            highestGrade = student;
+                        }
+                    });
+
+                    return `<h2>${highestGrade.name} - ${highestGrade.grade}</h2>`;
                 }
             }
 
