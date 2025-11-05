@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            // Array of student objects
+            const students = [
+                { name: "Alex", grade: 90 },
+                { name: "Jordan", grade: 85 },
+                { name: "Taylor", grade: 78 },
+                { name: "Riley", grade: 92 }
+            ];
+
+
+
+            // Button handlers
+            function showAllStudents() {
+                document.getElementById("output").innerHTML = studentManager.showAll();
+            }
+
+            function showBestStudent() {
+                document.getElementById("output").innerHTML = studentManager.bestStudent();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript Objects with Methods</h1>
+        <p>This example shows how an object can hold both data and functions that work on that data.</p>
+
+        <button onclick="showAllStudents()">Show All Students</button>
+        <button onclick="showBestStudent()">Show Best Student</button>
+
+        <div id="output"></div>
+    </body>
+</html>
