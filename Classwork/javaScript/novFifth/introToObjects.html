@@ -15,8 +15,14 @@
             const studentManager = {
                 list: students,
                 showAll: function() {
-
-                }
+                    let outText = `<h2>All Students</h2>`;
+                    outText += `<ol>`;
+                    for (let i = 0; i < this.list.length; i++) {
+                        outText += `<li>${this.list[i].name}</li>`;
+                    }
+                    outText += `</ol>`;
+                    return outText;
+                },
                 bestStudent: function() {
                     
                 }
