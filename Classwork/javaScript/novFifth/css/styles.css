@@ -1,0 +1,9 @@
+body { background:#064420; font-family:Arial,sans-serif; color:#fff; text-align:center; }
+#cardArea { display:grid; grid-template-columns:repeat(5,100px); gap:20px; justify-content:center; margin-top:30px; }
+.card { position:relative; cursor:pointer; border-radius:8px; border:3px solid transparent; transition:transform .2s ease; }
+.card:hover { transform:scale(1.05); }
+.card.held { border:3px solid gold; }
+.hold-label { position:absolute; bottom:5px; left:0; right:0; font-size:14px; background:rgba(255,215,0,.8); color:#000; border-radius:4px; padding:2px; }
+button { margin:20px 10px; padding:10px 20px; font-size:16px; border-radius:8px; border:none; background:#fff; color:#064420; font-weight:bold; cursor:pointer; }
+button:hover { background:#ddd; }
+button:disabled { background:#666; color:#bbb; cursor:not-allowed; }

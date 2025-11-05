@@ -1,10 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            // Array of student objects
+            const students = [
+                { name: "Alex", grade: 90 },
+                { name: "Jordan", grade: 85 },
+                { name: "Taylor", grade: 78 },
+                { name: "Riley", grade: 92 }
+            ];
 
-</body>
+            const studentManager = {
+                list: students,
+                showAll: function() {
+                    let outText = `<h2>All Students</h2>`;
+                    outText += `<ol>`;
+                    for (let i = 0; i < this.list.length; i++) {
+                        outText += `<li>${this.list[i].name} - ${this.list[i].grade}</li>`;
+                    }
+                    outText += `</ol>`;
+                    return outText;
+                }
+            }
+
+            let fruits = {};
+            let fruit2 = new Object();
+
+            class Student {
+                constructor(name, grade) {
+                    this.name = name;
+                    this.grade = grade;
+                }
+
+                getLetterGrade() {
+                    if (this.grade >= 90) {return `A`}
+                    if (this.grade >= 80) {return `B`}
+                    if (this.grade >= 70) {return `C`}
+                    if (this.grade >= 60) {return `D`}
+                    if (this.grade >= 50) {return `F`}
+                }
+            }
+
+            const Jack = new Student("Jack", 90);
+            const myClass = [
+                Jack,
+                new Student("Jan", 89),
+                new Student("Jim", 71)
+            ];
+
+            function showTheClass() {
+                let outText = `<h2>All myClass</h2>`;
+                outText += `<ol>`;
+                myClass.forEach(student => {
+                    outText += `<li>${student.name} - ${student.grade} - ${student.getLetterGrade()}</li>`;
+                });
+                outText += `</ol>`;
+                return outText;
+            }
+
+            // Button handlers
+            function showAllStudents() {
+                document.getElementById("output").innerHTML = studentManager.showAll();
+            }
+
+            function showBestStudent() {
+                document.getElementById("output").innerHTML = showTheClass();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript Objects with Methods</h1>
+        <p>This example shows how an object can hold both data and functions that work on that data.</p>
+
+        <button onclick="showAllStudents()">Show All Students</button>
+        <button onclick="showBestStudent()">Show Best Student</button>
+
+        <div id="output"></div>
+    </body>
 </html>
