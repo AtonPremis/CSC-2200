@@ -14,6 +14,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 {value: 14, name: "A"}
             ];
             this.cards = [];
+            for (let i = 0; i < suits.length; i++) {
+                let suit = suits[i];
+                for (let j = 0; j < values.length; j++) {
+                    let valueName = values[j];
+                    let suitLetter = suit.charAt(0).toUpperCase();
+                    let imageName = `${valueName.name}${suitLetter}.png`;
+                    this.cards.push({
+                        img: imageName,
+                        value: valueName.value,
+                        name: valueName.name,
+                        suit: suit
+                    });
+                }
+            }
         }
     }
+    deck.build();
 });
