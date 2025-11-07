@@ -28,7 +28,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 }
             }
+        },
+        // Fisher–Yates shuffle (loop + swap; easy to follow)
+        shuffle: function () {
+            for (let i = this.cards.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                let temp = this.cards[i];
+                this.cards[i] = this.cards[j];
+                this.cards[j] = temp;
+            }
+        },
+        dealOneCard: function () {
+            if (this.nextIndex >= this.cards.length) {return null;}
+            let card = this.cards[this.nextIndex];
+            this.nextIndex++;
+            return card;
         }
     }
     deck.build();
+    deck.shuffle();
+    let card = deck.dealOneCard();
+    console.log(card);
+    card = deck.dealOneCard();
+    console.log(card);
 });
