@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     let deck = {
-        hand: [],
+        cards: [],
         nextIndex: 0,
         build: function () {
             let suits = ["hearts", "spades", "clubs", "diamonds"];
