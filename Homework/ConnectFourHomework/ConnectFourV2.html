@@ -120,7 +120,15 @@
                  */
                 hasLineOfFour(startRow, startColumn, deltaRow, deltaColumn, player) {
                     // TODO: your code here
-                    return false;
+                    for (let i = 0; i < 4; i++) {
+                        let value = Board.getCell(startRow, startColumn);
+                        if (value === undefined || value != player) {
+                            return false;
+                        }
+                        startRow += deltaRow;
+                        startColumn += deltaColumn;
+                    }
+                    return true;
                 },
 
                 /**
@@ -134,6 +142,14 @@
                  */
                 checkWin(player) {
                     // TODO: your code here
+                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
+                        for (let j = 0; j < Board.ROW_COUNT; j++) {
+                            if (this.hasLineOfFour(j, i, 0, 1, player)) {return true;}
+                            if (this.hasLineOfFour(j, i, 1, 0, player)) {return true;}
+                            if (this.hasLineOfFour(j, i, 1, 1, player)) {return true;}
+                            if (this.hasLineOfFour(j, i, 1, -1, player)) {return true;}
+                        }
+                    }
                     return false;
                 }
             };
