@@ -1,45 +1,219 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSC2200 — Connect Four </title>
+        <style>
+            * { box-sizing: border-box; }
+            body { font-family: Arial, Helvetica, sans-serif; margin: 24px; display: flex; flex-direction: column; align-items: center; background: #f6f7fb; color: #222; }
+            h1 { margin: 0 0 8px; font-size: 24px; }
+            .banner { min-height: 24px; margin: 6px 0 14px; font-weight: 600; }
+            .controls { display: flex; gap: 10px; margin-bottom: 12px; }
+            button { padding: 8px 12px; border: none; border-radius: 8px; background: #34495e; color: #fff; cursor: pointer; }
+            button:hover { filter: brightness(1.05); }
 
+            /* Unified grid: first row = buttons, next rows = board cells */
+            .grid { display: grid; gap: 6px; background: #145da0; padding: 8px; border-radius: 10px; }
+            .drop-button { height: 36px; border-radius: 6px; border: none; background: #2980b9; color: #fff; cursor: pointer; font-weight: bold; }
+            .drop-button:hover { background: #3498db; }
 
-  
-  
-  
-  
+            .cell { width: 64px; height: 64px; border-radius: 50%; background: #e0e6ee; display: flex; align-items: center; justify-content: center; }
+            .disc-red { background: #e74c3c; }
+            .disc-yellow { background: #f1c40f; }
+        </style>
+    </head>
+    <body>
+        <h1>Connect Four — Human vs AI</h1>
+        <div id="banner" class="banner" aria-live="polite">Starter loaded. Complete the TODOs.</div>
 
+        <div class="controls">
+            <button id="newGameButton" type="button">New Game</button>
+        </div>
 
-<h1>Connect Four — Human vs AI</h1>
-<div class="banner">Starter loaded. Complete the TODOs.</div>
+        <div id="grid" class="grid" role="grid" aria-label="Connect Four board with column buttons"></div>
 
-<div class="controls">
-  New Game
-</div>
+        <script>
+            // ===== Board =====
+            const Board = {
+                ROW_COUNT: 6,
+                COLUMN_COUNT: 7,
+                grid: [],
+                /** Reset the board to all zeros. */
+                reset() {
+                    this.grid = Array.from({ length: this.ROW_COUNT }, () => Array(this.COLUMN_COUNT).fill(0));
+                },
+                /** Return a shallow copy of the grid rows.
+                 * That is make duplicate port so can modify it safely */
+                clone() { return this.grid.map(row => row.slice()); },
+                getCell(row, column) { return this.grid[row][column]; },
+                setCell(row, column, value) { this.grid[row][column] = value; },
 
-<div class="grid"></div>
+                /**
+                 * TODO [B1]: Implement and return the lowest empty row index in the given column.
+                 * Scan from the bottom row upward until you find an empty cell (value 0).
+                 * If the column is full, return -1.
+                 */
+                lowestEmptyRow(column) {
+                    // TODO: your code here
+                    for (let i = 0; i < this.COLUMN_COUNT; i++) {
+                        let value = this.getCell(i, column);
+                        if (value === 0) {return i;}
+                    }
+                    return -1;
+                },
 
+                /**
+                 * TODO [B2]: Return true if the board is full.
+                 * Hint: In Connect Four, you can decide fullness by checking the **top row** for any zero.
+                 */
+                isFull() {
+                    // TODO: your code here
+                    for (let i = 0; i < this.ROW_COUNT; i++) {
+                        let value = this.getCell(this.COLUMN_COUNT - 1, i);
+                        if (value === 0) {return true;}
+                    }
+                    return false;
+                }
+            };
 
+            // ===== Renderer =====
+            const Renderer = {
+                gridRoot: document.getElementById('grid'),
+                onColumnSelect: null,
+                init(onColumnSelect) { this.onColumnSelect = onColumnSelect; },
+                render() {
+                    // Build a unified grid so button columns always align with board columns
+                    this.gridRoot.innerHTML = '';
+                    this.gridRoot.style.gridTemplateColumns = `repeat(${Board.COLUMN_COUNT}, 76px)`;
+                    this.gridRoot.style.gridTemplateRows = `36px repeat(${Board.ROW_COUNT}, 64px)`;
 
+                    // Row 0: column buttons
+                    for (let column = 0; column < Board.COLUMN_COUNT; column++) {
+                        const button = document.createElement('button');
+                        button.className = 'drop-button';
+                        button.textContent = String(column + 1);
+                        button.setAttribute('aria-label', `Drop in column ${column + 1}`);
+                        button.addEventListener('click', () => this.onColumnSelect(column));
+                        this.gridRoot.appendChild(button);
+                    }
+                    // Rows 1..N: cells
+                    for (let row = 0; row < Board.ROW_COUNT; row++) {
+                        for (let column = 0; column < Board.COLUMN_COUNT; column++) {
+                            const cell = document.createElement('div');
+                            cell.className = 'cell';
+                            const value = Board.getCell(row, column);
+                            if (value === 1) { cell.classList.add('disc-red'); }
+                            if (value === 2) { cell.classList.add('disc-yellow'); }
+                            this.gridRoot.appendChild(cell);
+                        }
+                    }
+                }
+            };
 
-<script type="module" src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-						if (document.querySelector('math, .d2l-element, .d2l-cplus-layout') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
-							document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
-								elm.setAttribute('style', 'display: block; height: 0.5rem;');
-							});
+            // ===== Judge =====
+            const Judge = {
+                /**
+                 * TODO [J1]: Return true if 4 consecutive cells belong to `player`,
+                 * starting at (startRow, startColumn) and moving by (deltaRow, deltaColumn).
+                 * Carefully handle **bounds** so you never access outside the grid.
+                 */
+                hasLineOfFour(startRow, startColumn, deltaRow, deltaColumn, player) {
+                    // TODO: your code here
+                    return false;
+                },
 
-							document.querySelectorAll('math mmultiscripts > none').forEach(elm => {
-								const mrow = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
-								elm.replaceWith(mrow);
-							});
+                /**
+                 * TODO [J2]: Scan the whole board for any 4-in-a-row for `player`.
+                 * Use `hasLineOfFour` in four directions:
+                 *  - Horizontal: (0, +1)
+                 *  - Vertical: (+1, 0)
+                 *  - Diagonal down-right: (+1, +1)
+                 *  - Diagonal down-left: (+1, -1)
+                 * Return true if any are found; otherwise false.
+                 */
+                checkWin(player) {
+                    // TODO: your code here
+                    return false;
+                }
+            };
 
-							window.D2L.MathJax.loadMathJax({
-								outputScale: 1,
-								renderLatex: true,
-								enableMML3Support: false
-							});
-						}
-					});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-					document.querySelectorAll('.d2l-code').forEach(code => {
-						window.D2L.Prism.formatCodeElement(code);
-					});
-				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/embeds.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-					window.D2L.EmbedRenderer.renderEmbeds(document.body);
-				});</script></body></html>
+            // ===== AI (minimal heuristic) =====
+            const AI = {
+                playerId: 2,
+                opponentId: 1,
+                /**
+                 * TODO [A1]: Choose a column index for the AI's move using this simple heuristic:
+                 *   1) If the AI can win this turn by dropping in some column, choose that column.
+                 *   2) Else if the human could win next turn, choose a column that **blocks** that win.
+                 *   3) Else choose a valid column with a **center preference** (e.g., 3,2,4,1,5,0,6).
+                 * Return a valid column index (0..6). Do not return a full column.
+                 */
+                chooseMove() {
+                    // TODO: your code here
+                    return 0;
+                },
+
+                /**
+                 * Helper (optional): determine whether `player` would have a win if they dropped into `column` now.
+                 * Suggested approach: copy the board (use `Board.clone()`), apply the tentative move,
+                 * and ask `Judge.checkWin(player)` on the snapshot.
+                 * Return true/false. You may implement this or perform the same logic inline in `chooseMove`.
+                 */
+                wouldWinIfDropped(column, player) {
+                    // TODO: optional helper — implement if you want
+                    return false;
+                }
+            };
+
+            // ===== Game (flow) =====
+            const Game = {
+                HUMAN: 1,
+                AI: 2,
+                isOver: false,
+                init() {
+                    document.getElementById('newGameButton').addEventListener('click', () => this.newGame());
+                    Renderer.init((column) => this.handleColumn(column));
+                    this.newGame();
+                },
+                newGame() {
+                    this.isOver = false;
+                    Board.reset();
+                    setBanner('Your move (Red).');
+                    Renderer.render();
+                },
+                handleColumn(column) {
+                    if (this.isOver) {
+                        return;
+                    }
+                    // Human move first
+                    const humanPlayed = this.dropAndResolve(column, this.HUMAN);
+                    if (!humanPlayed || this.isOver) {
+                        // If nothing happened yet, you're likely still on TODOs.
+                        setBanner('Implement the TODOs (drop, win, draw) to make moves work.');
+                        return;
+                    }
+                    // TODO [G2]: After human plays, compute AI's column (use AI.chooseMove())
+                    // and call this.dropAndResolve(aiColumn, this.AI).
+                },
+
+                /**
+                 * TODO [G1]: Place the disc for `player` in `column` using Board.lowestEmptyRow.
+                 * If the column is full, return false without changing anything.
+                 * Otherwise: set the cell, call Renderer.render(), then check for win with Judge.checkWin(player)
+                 * (update banner and set this.isOver accordingly). If no win, check Board.isFull() for a draw.
+                 * Return true if a disc was placed (even if game ended); false if the column was full.
+                 */
+                dropAndResolve(column, player) {
+                    // TODO: your code here
+                    return false;
+                }
+            };
+
+            function setBanner(text) { document.getElementById('banner').textContent = text; }
+
+            // Boot
+            document.addEventListener('DOMContentLoaded', () => { Game.init(); });
+        </script>
+    </body>
+</html>
