@@ -167,7 +167,29 @@
                  */
                 chooseMove() {
                     // TODO: your code here
-                    return 0;
+                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
+                        if (Board.lowestEmptyRow(i) != -1) {
+                            Board.setCell(i, Board.lowestEmptyRow(i), 2);
+                            if (Judge.checkWin(2)) {return i;}
+                            else {Board.setCell(i, Board.lowestEmptyRow(i), 0);}
+                        }
+                    }
+
+                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
+                        if (Board.lowestEmptyRow(i) != -1) {
+                            Board.setCell(i, Board.lowestEmptyRow(i), 1);
+                            if (Judge.checkWin(1)) {return i;}
+                            else {Board.setCell(i, Board.lowestEmptyRow(i), 0);}
+                        }
+                    }
+
+                    if (Board.lowestEmptyRow(3) != -1) {return 3;}
+                    if (Board.lowestEmptyRow(2) != -1) {return 2;}
+                    if (Board.lowestEmptyRow(4) != -1) {return 4;}
+                    if (Board.lowestEmptyRow(1) != -1) {return 1;}
+                    if (Board.lowestEmptyRow(5) != -1) {return 5;}
+                    if (Board.lowestEmptyRow(0) != -1) {return 0;}
+                    if (Board.lowestEmptyRow(6) != -1) {return 6;}
                 },
 
                 /**
