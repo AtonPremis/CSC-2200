@@ -57,7 +57,9 @@
                 lowestEmptyRow(column) {
                     // TODO: your code here
                     for (let i = this.ROW_COUNT - 1; i >= 0; i--) {
+                        console.log(i);
                         let value = this.getCell(i, column);
+                        console.log(value);
                         if (value === 0) {return i;}
                     }
                     return -1;
@@ -122,7 +124,6 @@
                     // TODO: your code here
                     for (let i = 0; i < 4; i++) {
                         let value = Board.getCell(startRow, startColumn);
-                        console.log(value);
                         if (value === undefined || value != player) {
                             return false;
                         }
@@ -168,7 +169,7 @@
                  */
                 chooseMove() {
                     // TODO: your code here
-                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
+                    for (let i = Board.COLUMN_COUNT - 1; i >= 0; i--) {
                         if (Board.lowestEmptyRow(i) != -1) {
                             Board.setCell(i, Board.lowestEmptyRow(i), 2);
                             if (Judge.checkWin(2)) {return i;}
@@ -176,7 +177,7 @@
                         }
                     }
 
-                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
+                    for (let i = Board.COLUMN_COUNT; i >= 0; i--) {
                         if (Board.lowestEmptyRow(i) != -1) {
                             Board.setCell(i, Board.lowestEmptyRow(i), 1);
                             if (Judge.checkWin(1)) {return i;}
