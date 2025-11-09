@@ -56,7 +56,7 @@
                  */
                 lowestEmptyRow(column) {
                     // TODO: your code here
-                    for (let i = 0; i < this.COLUMN_COUNT; i++) {
+                    for (let i = this.ROW_COUNT - 1; i >= 0; i--) {
                         let value = this.getCell(i, column);
                         if (value === 0) {return i;}
                     }
@@ -69,8 +69,8 @@
                  */
                 isFull() {
                     // TODO: your code here
-                    for (let i = 0; i < this.ROW_COUNT; i++) {
-                        let value = this.getCell(this.COLUMN_COUNT - 1, i);
+                    for (let i = 0; i < this.COLUMN_COUNT; i++) {
+                        let value = this.getCell(0, i);
                         if (value === 0) {return true;}
                     }
                     return false;
@@ -122,6 +122,7 @@
                     // TODO: your code here
                     for (let i = 0; i < 4; i++) {
                         let value = Board.getCell(startRow, startColumn);
+                        console.log(value);
                         if (value === undefined || value != player) {
                             return false;
                         }
@@ -142,8 +143,8 @@
                  */
                 checkWin(player) {
                     // TODO: your code here
-                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        for (let j = 0; j < Board.ROW_COUNT; j++) {
+                    for (let i = Board.COLUMN_COUNT - 1; i >= 0; i--) {
+                        for (let j = Board.ROW_COUNT - 1; j >= 0; j--) {
                             if (this.hasLineOfFour(j, i, 0, 1, player)) {return true;}
                             if (this.hasLineOfFour(j, i, 1, 0, player)) {return true;}
                             if (this.hasLineOfFour(j, i, 1, 1, player)) {return true;}
@@ -189,7 +190,7 @@
                     if (Board.lowestEmptyRow(1) != -1) {return 1;}
                     if (Board.lowestEmptyRow(5) != -1) {return 5;}
                     if (Board.lowestEmptyRow(0) != -1) {return 0;}
-                    if (Board.lowestEmptyRow(6) != -1) {return 6;}
+                    return 6;
                 },
 
                 /**
@@ -233,6 +234,7 @@
                     }
                     // TODO [G2]: After human plays, compute AI's column (use AI.chooseMove())
                     // and call this.dropAndResolve(aiColumn, this.AI).
+                    this.dropAndResolve(AI.chooseMove(), this.AI);
                 },
 
                 /**
@@ -244,7 +246,15 @@
                  */
                 dropAndResolve(column, player) {
                     // TODO: your code here
-                    return false;
+                    let row = Board.lowestEmptyRow(column);
+                    if (row === -1) {return false;}
+                    Board.setCell(row, column, player);
+                    Renderer.render();
+                    Judge.checkWin(player);
+                    setBanner('Move Placed');
+                    this.isOver = false;
+                    Board.isFull();
+                    return true;
                 }
             };
 
