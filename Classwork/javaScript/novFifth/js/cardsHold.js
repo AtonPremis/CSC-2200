@@ -43,12 +43,64 @@ document.addEventListener("DOMContentLoaded", function() {
             let card = this.cards[this.nextIndex];
             this.nextIndex++;
             return card;
+        },
+        dealHand: function(numberOfCards) {
+            let hand = [];
+            for (let card = 0; card < numberOfCards; card++) {hand.push(this.dealOneCard());}
+            return hand;
+        },
+        reset: function () {
+            this.build();
+            this.shuffle();
+            this.nextIndex = 0;
         }
     }
-    deck.build();
-    deck.shuffle();
-    let card = deck.dealOneCard();
-    console.log(card);
-    card = deck.dealOneCard();
-    console.log(card);
+
+    document.getElementById("dealBtn").onclick = function() {
+        deck.reset();
+        const HAND_SIZE = 5;
+        let hand = deck.dealHand(HAND_SIZE);
+        showHand(hand);
+        findPair(hand);
+        findPair2(hand);
+    }
+
+    function showHand(hand) {
+        let cardArea = document.getElementById("cardArea");
+        cardArea.innerHTML = "";
+        hand.forEach(card => {
+            let img = document.createElement("img");
+            img.classList.add("card");
+            img.src = `imgs/${card.img}`;
+            img.alt = `${card.name} of ${card.suit}`;
+            cardArea.appendChild(img);
+        });
+    }
+
+    function findPair(hand) {
+        let pairs = [];
+        for (let i = 0; i < hand.length; i++) {
+            for (let j = i + 1; j < hand.length; j++) {
+                if (hand[i].value === hand[j].value) {
+                    pairs.push(hand[i]);
+                    j = hand.length;
+                }
+            }
+        }
+
+        let message = document.getElementById("message");
+
+        message.textContent = `You have ${pairs.length} pairs`;
+    }
+
+    function findPair2(hand) {
+        let evals = {};
+        for (let i = 0; i < hand.length; i++) {
+            let v = hand[i].value;
+            if (evals[v] == undefined) {evals[v] = 1;}
+            else {evals[v] += 1;}
+        }
+        console.log(evals);
+    }
+
 });
