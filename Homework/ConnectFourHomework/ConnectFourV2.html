@@ -56,9 +56,9 @@
                  */
                 lowestEmptyRow(column) {
                     // TODO: your code here
-                    for (let i = this.ROW_COUNT - 1; i >= 0; i--) {
-                        let value = this.getCell(i, column);
-                        if (value === 0) {return i;}
+                    for (let row = this.ROW_COUNT - 1; row >= 0; row--) {
+                        let value = this.getCell(row, column);
+                        if (value === 0) {return row;}
                     }
                     return -1;
                 },
@@ -69,8 +69,8 @@
                  */
                 isFull() {
                     // TODO: your code here
-                    for (let i = 0; i < this.COLUMN_COUNT; i++) {
-                        let value = this.getCell(0, i);
+                    for (let column = 0; column < this.COLUMN_COUNT; column++) {
+                        let value = this.getCell(0, column);
                         if (value === 0) {return false;}
                     }
                     return true;
@@ -142,12 +142,12 @@
                  */
                 checkWin(player) {
                     // TODO: your code here
-                    for (let i = 0; i < Board.ROW_COUNT; i++) {
-                        for (let j = 0; j < Board.COLUMN_COUNT; j++) {
-                            if (this.hasLineOfFour(i, j, 0, 1, player)) {return true;}
-                            if (this.hasLineOfFour(i, j, 1, 0, player)) {return true;}
-                            if (this.hasLineOfFour(i, j, 1, 1, player)) {return true;}
-                            if (this.hasLineOfFour(i, j, 1, -1, player)) {return true;}
+                    for (let row = 0; row < Board.ROW_COUNT; row++) {
+                        for (let column = 0; column < Board.COLUMN_COUNT; column++) {
+                            if (this.hasLineOfFour(row, column, 0, 1, player)) {return true;}
+                            if (this.hasLineOfFour(row, column, 1, 0, player)) {return true;}
+                            if (this.hasLineOfFour(row, column, 1, 1, player)) {return true;}
+                            if (this.hasLineOfFour(row, column, 1, -1, player)) {return true;}
                         }
                     }
                     return false;
@@ -167,27 +167,27 @@
                  */
                 chooseMove() {
                     // TODO: your code here
-                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        let row = Board.lowestEmptyRow(i);
+                    for (let column = 0; column < Board.COLUMN_COUNT; column++) {
+                        let row = Board.lowestEmptyRow(column);
                         if (row != -1) {
-                            Board.setCell(row, i, 2);
+                            Board.setCell(row, column, 2);
                             if (Judge.checkWin(2)) {
-                                Board.setCell(row, i, 0);
-                                return i;
+                                Board.setCell(row, column, 0);
+                                return column;
                             }
-                            Board.setCell(row, i, 0);
+                            Board.setCell(row, column, 0);
                         }
                     }
 
-                    for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        let row = Board.lowestEmptyRow(i);
+                    for (let column = 0; column < Board.COLUMN_COUNT; column++) {
+                        let row = Board.lowestEmptyRow(column);
                         if (row != -1) {
-                            Board.setCell(row, i, 1);
+                            Board.setCell(row, column, 1);
                             if (Judge.checkWin(1)) {
-                                Board.setCell(row, i, 0);
-                                return i;
+                                Board.setCell(row, column, 0);
+                                return column;
                             }
-                            else {Board.setCell(row, i, 0);}
+                            Board.setCell(row, column, 0);
                         }
                     }
 
