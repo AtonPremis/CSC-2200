@@ -71,9 +71,9 @@
                     // TODO: your code here
                     for (let i = 0; i < this.COLUMN_COUNT; i++) {
                         let value = this.getCell(0, i);
-                        if (value === 0) {return true;}
+                        if (value === 0) {return false;}
                     }
-                    return false;
+                    return true;
                 }
             };
 
@@ -168,26 +168,23 @@
                 chooseMove() {
                     // TODO: your code here
                     for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        console.log(Board.lowestEmptyRow(i));
                         if (Board.lowestEmptyRow(i) != -1) {
                             Board.setCell(Board.lowestEmptyRow(i), i, 2);
-                            console.log(Board.grid);
-                            console.log(Judge.checkWin(2));
                             if (Judge.checkWin(2)) {
                                 Board.setCell(Board.lowestEmptyRow(i), i, 0);
                                 return i;
                             }
                             else {Board.setCell(Board.lowestEmptyRow(i), i, 0);}
-                            console.log(Board.grid);
                         }
                     }
-
-                    console.log("worls");
 
                     for (let i = 0; i < Board.COLUMN_COUNT; i++) {
                         if (Board.lowestEmptyRow(i) != -1) {
                             Board.setCell(Board.lowestEmptyRow(i), i, 1);
-                            if (Judge.checkWin(1)) {return i;}
+                            if (Judge.checkWin(1)) {
+                                Board.setCell(Board.lowestEmptyRow(i), i, 0);
+                                return i;
+                            }
                             else {Board.setCell(Board.lowestEmptyRow(i), i, 0);}
                         }
                     }
@@ -235,11 +232,11 @@
                     }
                     // Human move first
                     const humanPlayed = this.dropAndResolve(column, this.HUMAN);
-                    if (!humanPlayed || this.isOver) {
-                        // If nothing happened yet, you're likely still on TODOs.
-                        setBanner('Implement the TODOs (drop, win, draw) to make moves work.');
-                        return;
-                    }
+                    // if (!humanPlayed || this.isOver) {
+                    //     // If nothing happened yet, you're likely still on TODOs.
+                    //     setBanner('Implement the TODOs (drop, win, draw) to make moves work.');
+                    //     return;
+                    // }
                     // TODO [G2]: After human plays, compute AI's column (use AI.chooseMove())
                     // and call this.dropAndResolve(aiColumn, this.AI).
                     this.dropAndResolve(AI.chooseMove(), this.AI);
@@ -256,12 +253,20 @@
                     // TODO: your code here
                     let row = Board.lowestEmptyRow(column);
                     if (row === -1) {return false;}
+
                     Board.setCell(row, column, player);
                     Renderer.render();
-                    Judge.checkWin(player);
-                    setBanner('Move Placed');
-                    this.isOver = false;
-                    Board.isFull();
+
+                    if (Judge.checkWin(player)) {
+                        setBanner("Player Won");
+                        this.isOver = true;
+                    }
+
+                    if (Board.isFull()) {
+                        setBanner("Draw");
+                        this.isOver = true;
+                    }
+
                     return true;
                 }
             };
