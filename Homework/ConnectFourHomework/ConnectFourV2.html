@@ -121,10 +121,10 @@
                 hasLineOfFour(startRow, startColumn, deltaRow, deltaColumn, player) {
                     // TODO: your code here
                     for (let i = 0; i < 4; i++) {
+                        if (startRow < 0 || startRow >= Board.ROW_COUNT) {return false;}
+                        if (startColumn < 0 || startColumn >= Board.COLUMN_COUNT) {return false;}
                         let value = Board.getCell(startRow, startColumn);
-                        if (value != player) {
-                            return false;
-                        }
+                        if (value != player) {return false;}
                         startRow += deltaRow;
                         startColumn += deltaColumn;
                     }
@@ -168,24 +168,26 @@
                 chooseMove() {
                     // TODO: your code here
                     for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        if (Board.lowestEmptyRow(i) != -1) {
-                            Board.setCell(Board.lowestEmptyRow(i), i, 2);
+                        let row = Board.lowestEmptyRow(i);
+                        if (row != -1) {
+                            Board.setCell(row, i, 2);
                             if (Judge.checkWin(2)) {
-                                Board.setCell(Board.lowestEmptyRow(i), i, 0);
+                                Board.setCell(row, i, 0);
                                 return i;
                             }
-                            else {Board.setCell(Board.lowestEmptyRow(i), i, 0);}
+                            Board.setCell(row, i, 0);
                         }
                     }
 
                     for (let i = 0; i < Board.COLUMN_COUNT; i++) {
-                        if (Board.lowestEmptyRow(i) != -1) {
-                            Board.setCell(Board.lowestEmptyRow(i), i, 1);
+                        let row = Board.lowestEmptyRow(i);
+                        if (row != -1) {
+                            Board.setCell(row, i, 1);
                             if (Judge.checkWin(1)) {
-                                Board.setCell(Board.lowestEmptyRow(i), i, 0);
+                                Board.setCell(row, i, 0);
                                 return i;
                             }
-                            else {Board.setCell(Board.lowestEmptyRow(i), i, 0);}
+                            else {Board.setCell(row, i, 0);}
                         }
                     }
 
@@ -227,16 +229,16 @@
                     Renderer.render();
                 },
                 handleColumn(column) {
-                    if (this.isOver) {
+                    if (this.isOver) {return;}
+                    // Human move first
+                    let humanPlayed = this.dropAndResolve(column, this.HUMAN);
+                    if (!humanPlayed) {
+                        setBanner("Column Full!");
                         return;
                     }
-                    // Human move first
-                    const humanPlayed = this.dropAndResolve(column, this.HUMAN);
-                    // if (!humanPlayed || this.isOver) {
-                    //     // If nothing happened yet, you're likely still on TODOs.
-                    //     setBanner('Implement the TODOs (drop, win, draw) to make moves work.');
-                    //     return;
-                    // }
+                    setBanner('Your move (Red).');
+                    if (this.isOver) {return;}
+
                     // TODO [G2]: After human plays, compute AI's column (use AI.chooseMove())
                     // and call this.dropAndResolve(aiColumn, this.AI).
                     this.dropAndResolve(AI.chooseMove(), this.AI);
@@ -258,7 +260,8 @@
                     Renderer.render();
 
                     if (Judge.checkWin(player)) {
-                        setBanner("Player Won");
+                        if (player === 1) {setBanner("Player Won!");}
+                        else {setBanner("AI Won!");}
                         this.isOver = true;
                     }
 
