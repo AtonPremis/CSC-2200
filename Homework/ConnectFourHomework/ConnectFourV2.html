@@ -21,6 +21,7 @@
             .cell { width: 64px; height: 64px; border-radius: 50%; background: #e0e6ee; display: flex; align-items: center; justify-content: center; }
             .disc-red { background: #e74c3c; }
             .disc-yellow { background: #f1c40f; }
+            .highlight {border: 5px solid #55ff00; }
         </style>
     </head>
     <body>
@@ -98,10 +99,17 @@
                         this.gridRoot.appendChild(button);
                     }
                     // Rows 1..N: cells
+                    let highlightIncrement = 0;
                     for (let row = 0; row < Board.ROW_COUNT; row++) {
                         for (let column = 0; column < Board.COLUMN_COUNT; column++) {
                             const cell = document.createElement('div');
                             cell.className = 'cell';
+                            if (Game.isOver && highlightIncrement < 4) {
+                                if (row === Judge.winningFour[highlightIncrement][0] && column === Judge.winningFour[highlightIncrement][1]) {
+                                    cell.classList.add("highlight");
+                                    highlightIncrement++;
+                                }
+                            }
                             const value = Board.getCell(row, column);
                             if (value === 1) { cell.classList.add('disc-red'); }
                             if (value === 2) { cell.classList.add('disc-yellow'); }
@@ -113,6 +121,7 @@
 
             // ===== Judge =====
             const Judge = {
+                winningFour: [],
                 /**
                  * TODO [J1]: Return true if 4 consecutive cells belong to `player`,
                  * starting at (startRow, startColumn) and moving by (deltaRow, deltaColumn).
@@ -120,14 +129,18 @@
                  */
                 hasLineOfFour(startRow, startColumn, deltaRow, deltaColumn, player) {
                     // TODO: your code here
+                    this.winningFour = [];
+
                     for (let i = 0; i < 4; i++) {
                         if (startRow < 0 || startRow >= Board.ROW_COUNT) {return false;}
                         if (startColumn < 0 || startColumn >= Board.COLUMN_COUNT) {return false;}
                         let value = Board.getCell(startRow, startColumn);
                         if (value != player) {return false;}
+                        this.winningFour.push([startRow, startColumn]);
                         startRow += deltaRow;
                         startColumn += deltaColumn;
                     }
+
                     return true;
                 },
 
@@ -258,7 +271,6 @@
                     if (row === -1) {return false;}
 
                     Board.setCell(row, column, player);
-                    Renderer.render();
 
                     if (Judge.checkWin(player)) {
                         if (player === 1) {setBanner("Player Won!");}
@@ -270,6 +282,8 @@
                         setBanner("Draw");
                         this.isOver = true;
                     }
+
+                    Renderer.render();
 
                     return true;
                 }
