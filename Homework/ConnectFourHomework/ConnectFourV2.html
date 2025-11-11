@@ -104,7 +104,7 @@
                         for (let column = 0; column < Board.COLUMN_COUNT; column++) {
                             const cell = document.createElement('div');
                             cell.className = 'cell';
-                            if (Game.isOver && highlightIncrement < 4) {
+                            if (Game.isOver && highlightIncrement < 4 && document.getElementById('banner').textContent != "Draw") {
                                 if (row === Judge.winningFour[highlightIncrement][0] && column === Judge.winningFour[highlightIncrement][1]) {
                                     cell.classList.add("highlight");
                                     highlightIncrement++;
@@ -210,7 +210,12 @@
                     if (Board.lowestEmptyRow(1) != -1) {return 1;}
                     if (Board.lowestEmptyRow(5) != -1) {return 5;}
                     if (Board.lowestEmptyRow(0) != -1) {return 0;}
-                    return 6;
+                    if (Board.lowestEmptyRow(6) != -1) {return 6;}
+
+                    // If more than 7 columns
+                    for (let column = 7; column < Board.COLUMN_COUNT; column++) {
+                        if (Board.lowestEmptyRow(column) != -1) {return column;}
+                    }
                 },
 
                 /**
@@ -237,6 +242,8 @@
                 },
                 newGame() {
                     this.isOver = false;
+                    Board.ROW_COUNT = parseInt(prompt("How Many Rows?"));
+                    Board.COLUMN_COUNT = parseInt(prompt("How Many Columns?"));
                     Board.reset();
                     setBanner('Your move (Red).');
                     Renderer.render();
