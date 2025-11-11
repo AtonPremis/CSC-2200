@@ -87,7 +87,7 @@
                 render() {
                     // Build a unified grid so button columns always align with board columns
                     this.gridRoot.innerHTML = '';
-                    this.gridRoot.style.gridTemplateColumns = `repeat(${Board.COLUMN_COUNT}, 76px)`;
+                    this.gridRoot.style.gridTemplateColumns = `repeat(${Board.COLUMN_COUNT}, 64px)`;
                     this.gridRoot.style.gridTemplateRows = `36px repeat(${Board.ROW_COUNT}, 64px)`;
 
                     // Row 0: column buttons
