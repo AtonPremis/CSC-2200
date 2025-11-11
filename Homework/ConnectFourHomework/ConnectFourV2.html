@@ -30,6 +30,7 @@
 
         <div class="controls">
             <button id="newGameButton" type="button">New Game</button>
+            <button id="undoButton" type="button">Undo Last Move</button>
         </div>
 
         <div id="grid" class="grid" role="grid" aria-label="Connect Four board with column buttons"></div>
@@ -235,12 +236,17 @@
                 HUMAN: 1,
                 AI: 2,
                 isOver: false,
+                isLastMove: false,
+                humanLastMove: [],
+                AILastMove: [],
                 init() {
                     document.getElementById('newGameButton').addEventListener('click', () => this.newGame());
+                    document.getElementById('undoButton').addEventListener('click', () => this.undoLastMove());
                     Renderer.init((column) => this.handleColumn(column));
                     this.newGame();
                 },
                 newGame() {
+                    this.isLastMove = false;
                     this.isOver = false;
                     Board.ROW_COUNT = parseInt(prompt("How Many Rows?"));
                     Board.COLUMN_COUNT = parseInt(prompt("How Many Columns?"));
@@ -248,9 +254,19 @@
                     setBanner('Your move (Red).');
                     Renderer.render();
                 },
+                undoLastMove() {
+                    if (!this.isLastMove) {return;}
+
+                    Board.setCell(this.humanLastMove[0], this.humanLastMove[1], 0);
+                    Board.setCell(this.AILastMove[0], this.AILastMove[1], 0);
+                    Renderer.render();
+                    this.isLastMove = false;
+                },
                 handleColumn(column) {
                     if (this.isOver) {return;}
+                    
                     // Human move first
+                    this.isLastMove = true;
                     let humanPlayed = this.dropAndResolve(column, this.HUMAN);
                     if (!humanPlayed) {
                         setBanner("Column Full!");
@@ -279,14 +295,19 @@
 
                     Board.setCell(row, column, player);
 
+                    if (player === 1) {this.humanLastMove = [row, column];}
+                    else {this.AILastMove = [row, column];}
+
                     if (Judge.checkWin(player)) {
                         if (player === 1) {setBanner("Player Won!");}
                         else {setBanner("AI Won!");}
+                        this.isLastMove = false;
                         this.isOver = true;
                     }
 
                     if (Board.isFull()) {
                         setBanner("Draw");
+                        this.isLastMove = false;
                         this.isOver = true;
                     }
 
