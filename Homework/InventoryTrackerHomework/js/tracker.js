@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const pricePerItem = document.getElementById("pricePerItem").value;
 
         itemList.push(itemName);
-        countList.push(count);
-        priceList.push(pricePerItem);
+        countList.push(parseInt(count));
+        priceList.push(parseFloat(pricePerItem));
 
         displayItems();
         document.getElementById("itemName").value = "";
@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 <button data-index="${i}">Reduce</button>
             `;
             inventoryList.appendChild(inventoryItem);
-            totalValueNumber += parseFloat(priceList[i]) * parseInt(countList[i]);
+            totalValueNumber += priceList[i] * countList[i];
         }
 
-        totalValue.innerHTML = `Total Value: $${totalValueNumber}`;
+        totalValue.innerHTML = `Total Value: $${totalValueNumber.toFixed(2)}`;
     }
 
     inventoryList.addEventListener("click", (event) => {
