@@ -18,15 +18,23 @@ document.addEventListener("DOMContentLoaded", function() {
         },
         evaluateResults : function( uObj, cObj){
             if ( uObj.beats === cObj.item ){
+                this.state.wins++;
                 return this.messages.win;
             } else if ( cObj.beats === uObj.item ){
+                this.state.losses++;
                 return this.messages.lost;
             } else if ( cObj.item === uObj.item ){
+                this.state.draws++;
                 return this.messages.tied;
             } else {
                 // Todo: To this better
                 alert(" Warning danger")
             }
+        },
+        state: {
+            wins: 0,
+            losses: 0,
+            draws: 0
         }
     }
     let ui = {
@@ -39,6 +47,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const inHTML = result.message;
             const inner = `<img src=${result.img} width="100px" height="100px" alt=${result.alt} />`;
             document.getElementById("homerResults").innerHTML = inner + inHTML;
+        },
+        updateGameState(state) {
+            document.getElementById("wins").innerHTML = state.wins;
+            document.getElementById("loss").innerHTML = state.losses;
+            document.getElementById("draws").innerHTML = state.draws;
         }
 
     }
@@ -59,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 const result = game.evaluateResults(gObj, computerObj);
                 ui.updateResultMessage(result);
+                ui.updateGameState(game.state);
             }
 
         });
