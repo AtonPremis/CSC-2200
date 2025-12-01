@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+            background: #f9f9f9;
+            white-space: pre-line;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 1rem;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Get elements
+            const btn = document.getElementById("btnFetch");
+            const output = document.getElementById("output");
+            const URL = "https://api.adviceslip.com/advice";
+
+            function logIt(message) {
+                output.textContent += message + "\n";
+            }
+
+            btn.addEventListener("click", function() {
+                fetch(URL).then(
+                    function(response) {(
+                        logIt("Response Received");
+                        return response.json();
+                    ).then()
+                    }
+                );
+            })
+
+        });
+    </script>
+</head>
+<body>
+<h1>Simple Fetch Demo</h1>
+<p>Click the button to get a random piece of advice from a free API.</p>
+<button id="btnFetch">Get Advice</button>
+<h3>Output:</h3>
+<div id="output"></div>
+</body>
+</html>
