@@ -27,21 +27,33 @@
             // 1. Get elements
             const btn = document.getElementById("btnFetch");
             const output = document.getElementById("output");
-            const URL = "https://api.adviceslip.com/advice";
-
-            function logIt(message) {
-                output.textContent += message + "\n";
+            // 2. Simple helper to write to output box
+            function log(msg) {
+                output.textContent += msg + "\n";
             }
+            // 3. Add event listener
+            btn.addEventListener("click", function () {
+                output.textContent = ""; // clear
+                log("Requesting advice...");
 
-            btn.addEventListener("click", function() {
-                fetch(URL).then(
-                    function(response) {(
-                        logIt("Response Received");
+                // 4. Fetch call
+                fetch("https://api.adviceslip.com/advice")
+                    .then(function (response) {
+                        log("Response received (raw)");
                         return response.json();
-                    ).then()
-                    }
-                );
-            })
+                    })
+                    .then(function (data) {
+                        log("Converted to JSON:");
+                        log(JSON.stringify(data, null, 2));
+                        log("");
+                        log("Advice:");
+                        log(data.slip.advice);
+                    })
+                    .catch(function (error) {
+                        log("Error:");
+                        log(error);
+                    });
+            });
 
         });
     </script>
