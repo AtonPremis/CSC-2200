@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add a Book</title>
+</head>
+<body>
+<h2>Add a New Book</h2>
+<form id="bookForm">
+    <label>ID:</label><br>
+    <input type="text" id="id"><br><br>
+    <label>Cost:</label><br>
+    <input type="text" id="cost"><br><br>
+    <label>Link:</label><br>
+    <input type="text" id="link"><br><br>
+    <label>Title:</label><br>
+    <input type="text" id="title"><br><br>
+    <label>Author:</label><br>
+    <input type="text" id="author"><br><br>
+    <label>Description:</label><br>
+    <textarea id="description"></textarea><br><br>
+    <button type="submit">Add Book</button>
+</form>
+<p id="result"></p>
+<script>
+    document.getElementById("bookForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent page reload
+        // Create a JS object from form inputs
+        const newBook = {
+            id: document.getElementById("id").value,
+            cost: document.getElementById("cost").value,
+            link: document.getElementById("link").value,
+            title: document.getElementById("title").value,
+            author: document.getElementById("author").value,
+            description: document.getElementById("description").value
+        };
+
+        // POST the object to the JSON server
+        fetch("http://localhost:3000/books", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newBook)  // convert object → JSON string
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Book added: " + data.title;
+                console.log("Server Response:", data);
+            })
+            .catch(error => console.error("Error:", error));
+    });
+</script>
+</body>
+</html>

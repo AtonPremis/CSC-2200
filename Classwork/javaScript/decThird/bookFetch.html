@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books 4 U</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        th {
+            background: #ececec;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Get DOM elements
+            const tbody = document.getElementById("mainTable");
+            const resultsSpan = document.getElementById("results");
+
+            // Store books in a simple object for lookup
+            const booksById = {};
+
+            // Called when user clicks a "Details" button
+            function showBookDetails(id) {
+                const book = booksById[id];
+
+                if (book) {
+                    alert("You selected: " + book.title + "\nAuthor: " + book.author);
+                } else {
+                    alert("Book not found (id=" + id + ")");
+                }
+            }
+
+            function loadBooks() {
+                // const url = "http://45.55.136.114/~dlash/CSC3700/books.php";
+                const url = "http://localhost:3000/books";
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(items => {
+
+                        // Update count
+                        resultsSpan.textContent = items.length;
+
+                        // Build table rows
+                        let html = "";
+
+                        items.forEach(book => {
+                            booksById[book.id] = book;  // store for lookup
+
+                            html += `
+                <tr>
+                  <td><a href="${book.link}">${book.title}</a></td>
+                  <td>${book.author}</td>
+                  <td>${book.description}</td>
+                  <td><button class="details-btn" data-id="${book.id}">Details</button></td>
+                </tr>
+              `;
+                        });
+
+                        tbody.innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching books:", error);
+                    });
+            }
+
+            // Listen for clicks *inside the table*
+            tbody.addEventListener("click", function (event) {
+                if (event.target.classList.contains("details-btn")) {
+                    const id = event.target.getAttribute("data-id");
+                    showBookDetails(id);
+                }
+            });
+
+            // Load books as soon as page is ready
+            loadBooks();
+        });
+    </script>
+</head>
+
+<body>
+
+<h1>Books 4 U</h1>
+
+<p>Here is our current store of books.</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+
+    <tbody id="mainTable">
+    <!-- JavaScript inserts rows here -->
+    </tbody>
+</table>
+
+<p>Total books: <span id="results">0</span></p>
+
+</body>
+</html>
